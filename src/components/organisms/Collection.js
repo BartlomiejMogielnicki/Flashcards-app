@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Heading from '../atoms/Heading/Heading';
 import Button from '../atoms/Button/Button';
+import Paragraph from '../atoms/Paragraph/Paragraph';
 
 const StyledWrapper = styled.div`
   padding: 10px;
@@ -23,7 +24,10 @@ const StyledButtonsContainer = styled.div`
 
 const Collection = () => (
   <StyledWrapper>
-    <Heading>Collection Title</Heading>
+    <div>
+      <Heading>Collection Title</Heading>
+      <Paragraph>20 Cards</Paragraph>
+    </div>
     <StyledCollectionImage />
     <StyledButtonsContainer>
       <Button text="Play" />

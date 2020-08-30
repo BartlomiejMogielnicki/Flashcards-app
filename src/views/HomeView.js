@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Collection from '../components/organisms/Collection';
+import EmptySlot from '../components/atoms/EmptySlot/EmptySlot';
 
 const StyledWrapper = styled.div`
   margin: 10px auto 0;
@@ -19,8 +20,8 @@ const HomeView = () => (
     <Collection />
     <Collection />
     <Collection />
-    <Collection />
-    <Collection />
+    <EmptySlot />
+    <EmptySlot />
   </StyledWrapper>
 );
 
