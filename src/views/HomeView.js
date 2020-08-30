@@ -26,14 +26,55 @@ class HomeView extends Component {
       { title: 'empty', id: '4', cards: [] },
       { title: 'empty', id: '5', cards: [] },
     ],
-    showNewCollectionModal: true,
+    newCollection: {
+      showModal: false,
+      newTitle: '',
+    },
+  };
+
+  handleAddCollection = (e) => {
+    e.preventDefault();
+    const { newCollection } = { ...this.state };
+    if (e.type === 'click') {
+      newCollection.showModal = !newCollection.showModal;
+      newCollection.newTitle = '';
+      this.setState({
+        newCollection,
+      });
+    } else if (e.type === 'change') {
+      newCollection.newTitle = e.target.value;
+      this.setState({
+        newCollection,
+      });
+    } else if (e.type === 'submit') {
+      const { collections } = this.state;
+      let id;
+      for (let i = 0; i < collections.length; i++) {
+        if (collections[i].title === 'empty') {
+          id = collections[i].id;
+          break;
+        }
+      }
+      const createdCollection = {
+        title: newCollection.newTitle,
+        id,
+        cards: [],
+      };
+      collections[id] = createdCollection;
+      newCollection.showModal = !newCollection.showModal;
+      newCollection.newTitle = '';
+      this.setState({
+        collections,
+        newCollection,
+      });
+    }
   };
 
   render() {
-    const { collections, showNewCollectionModal } = this.state;
+    const { collections, newCollection } = this.state;
     const cards = collections.map((collection) =>
       collection.title === 'empty' ? (
-        <EmptySlot key={collection.id} />
+        <EmptySlot key={collection.id} clicked={this.handleAddCollection} />
       ) : (
         <Collection
           key={collection.id}
@@ -45,7 +86,9 @@ class HomeView extends Component {
     return (
       <StyledWrapper>
         {cards}
-        {showNewCollectionModal ? <NewItemModal /> : null}
+        {newCollection.showModal ? (
+          <NewItemModal addCollection={this.handleAddCollection} title={newCollection.newTitle} />
+        ) : null}
       </StyledWrapper>
     );
   }

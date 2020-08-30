@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledWrapper = styled.div`
   width: 250px;
@@ -30,10 +31,14 @@ const StyledSlotContent = styled.div`
   }
 `;
 
-const EmptySlot = () => (
-  <StyledWrapper>
+const EmptySlot = ({ clicked }) => (
+  <StyledWrapper onClick={clicked}>
     <StyledSlotContent />
   </StyledWrapper>
 );
+
+EmptySlot.propTypes = {
+  clicked: PropTypes.func.isRequired,
+};
 
 export default EmptySlot;

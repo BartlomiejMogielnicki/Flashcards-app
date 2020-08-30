@@ -17,8 +17,8 @@ const StyledButton = styled.button`
   font-size: 1.2rem;
 `;
 
-const Button = ({ icon }) => (
-  <StyledButton>
+const Button = ({ icon, addCollection }) => (
+  <StyledButton onClick={addCollection}>
     {icon === 'play' ? icons.play : null}
     {icon === 'edit' ? icons.edit : null}
     {icon === 'delete' ? icons.delete : null}
@@ -29,10 +29,12 @@ const Button = ({ icon }) => (
 
 Button.propTypes = {
   icon: PropTypes.string,
+  addCollection: PropTypes.func,
 };
 
 Button.defaultProps = {
   icon: null,
+  addCollection: null,
 };
 
 export default Button;

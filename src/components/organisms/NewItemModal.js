@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import NewItemForm from './NewItemForm';
 
 const StyledWrapper = styled.div`
@@ -13,10 +14,15 @@ const StyledWrapper = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-const NewItemModal = () => (
+const NewItemModal = ({ addCollection, title }) => (
   <StyledWrapper>
-    <NewItemForm />
+    <NewItemForm addCollection={addCollection} title={title} />
   </StyledWrapper>
 );
+
+NewItemModal.propTypes = {
+  addCollection: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+};
 
 export default NewItemModal;

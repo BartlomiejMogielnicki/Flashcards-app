@@ -8,6 +8,7 @@
     "document": true
   },
   "rules": {
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "react/state-in-constructor": 0,
     "import/no-extraneous-dependencies": 0,
     "jsx-a11y/label-has-associated-control": 1,

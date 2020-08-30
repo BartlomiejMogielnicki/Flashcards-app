@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Heading from '../atoms/Heading/Heading';
 import Input from '../atoms/Input/Input';
 import Button from '../atoms/Button/Button';
@@ -22,19 +23,25 @@ const StyledButtonContainer = styled.div`
   justify-content: space-evenly;
 `;
 
-const NewItemForm = () => (
-  <StyledWrapperForm>
+const NewItemForm = ({ addCollection, title }) => (
+  <StyledWrapperForm onSubmit={(e) => addCollection(e)}>
     <Heading>Add new collection</Heading>
     <StyledInputContainer>
       <label>
         Collection name:
-        <Input />
+        <Input placeholder="Enter collection name..." value={title} onChange={addCollection} />
       </label>
     </StyledInputContainer>
     <StyledButtonContainer>
       <Button icon="apply" />
-      <Button icon="cancel" />
+      <Button icon="cancel" addCollection={addCollection} />
     </StyledButtonContainer>
   </StyledWrapperForm>
 );
+
+NewItemForm.propTypes = {
+  addCollection: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+};
+
 export default NewItemForm;
