@@ -8,6 +8,22 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  button {
+    cursor:pointer;
+  }
+
+  button:focus, input:focus {
+    outline: none;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 export default GlobalStyle;

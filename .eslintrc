@@ -8,7 +8,7 @@
     "document": true
   },
   "rules": {
-    "react/state-in-constructor": 1,
+    "react/state-in-constructor": 0,
     "import/no-extraneous-dependencies": 0,
     "react/jsx-filename-extension": [
       1,
