@@ -9,7 +9,7 @@ const Root = () => (
   <BrowserRouter>
     <MainTemplate>
       <Switch>
-        <Route path="/" component={HomeView} />
+        <Route exact path="/" component={HomeView} />
         <Route path="/practice" component={PracticeView} />
         <Route path="/edit" component={EditorsVies} />
       </Switch>
