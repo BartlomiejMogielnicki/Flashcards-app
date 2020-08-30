@@ -16,7 +16,7 @@ const StyledSlotContent = styled.div`
   width: 5px;
   position: relative;
   border-radius: 10px;
-  background-color: #888;
+  background-color: #555;
 
   ::after {
     content: '';
@@ -26,7 +26,7 @@ const StyledSlotContent = styled.div`
     top: 50%;
     left: -90px;
     border-radius: 10px;
-    background-color: #888;
+    background-color: #555;
   }
 `;
 

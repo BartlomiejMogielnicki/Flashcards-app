@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Heading from '../atoms/Heading/Heading';
 import Button from '../atoms/Button/Button';
@@ -13,6 +14,7 @@ const StyledWrapper = styled.div`
   align-items: center;
   justify-content: center;
   border: 1px solid black;
+  text-align: center;
 `;
 
 const StyledCollectionImage = styled.div``;
@@ -22,19 +24,24 @@ const StyledButtonsContainer = styled.div`
   justify-content: space-evenly;
 `;
 
-const Collection = () => (
+const Collection = ({ title, cardsNum }) => (
   <StyledWrapper>
     <div>
-      <Heading>Collection Title</Heading>
-      <Paragraph>20 Cards</Paragraph>
+      <Heading>{title}</Heading>
+      <Paragraph>{cardsNum} Cards</Paragraph>
     </div>
     <StyledCollectionImage />
     <StyledButtonsContainer>
-      <Button text="Play" />
-      <Button text="Edit" />
-      <Button text="Delete" />
+      <Button icon="play" />
+      <Button icon="edit" />
+      <Button icon="delete" />
     </StyledButtonsContainer>
   </StyledWrapper>
 );
+
+Collection.propTypes = {
+  title: PropTypes.string.isRequired,
+  cardsNum: PropTypes.number.isRequired,
+};
 
 export default Collection;
