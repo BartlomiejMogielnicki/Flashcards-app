@@ -57,24 +57,31 @@ const StyledCardText = styled.p`
   font-size: 1.3rem;
 `;
 
-const Card = ({ isFlipped }) => (
-  <>
-    <StyledCard className={`${isFlipped ? 'flipped' : ''}`}>
-      <StyledCardFront className={`${isFlipped ? 'flipped' : ''}`}>
-        <StyledCardText>What is the answer?</StyledCardText>
-      </StyledCardFront>
-      <StyledCardBack className={`${isFlipped ? 'flipped' : ''}`}>
-        <StyledCardText>Nobody knows all the answers.</StyledCardText>
-      </StyledCardBack>
-    </StyledCard>
-  </>
-);
+const Card = ({ isFlipped, cards, activeCard }) => {
+  const { question, answer } = cards[activeCard];
+  return (
+    <>
+      <StyledCard className={`${isFlipped ? 'flipped' : ''}`}>
+        <StyledCardFront className={`${isFlipped ? 'flipped' : ''}`}>
+          <StyledCardText>{question}</StyledCardText>
+        </StyledCardFront>
+        <StyledCardBack className={`${isFlipped ? 'flipped' : ''}`}>
+          <StyledCardText>{answer}</StyledCardText>
+        </StyledCardBack>
+      </StyledCard>
+    </>
+  );
+};
 
 Card.propTypes = {
   isFlipped: PropTypes.bool,
+  cards: PropTypes.instanceOf(Array),
+  activeCard: PropTypes.number,
 };
 
 Card.defaultProps = {
   isFlipped: false,
+  cards: null,
+  activeCard: null,
 };
 export default Card;

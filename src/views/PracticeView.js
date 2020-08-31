@@ -12,19 +12,20 @@ class PracticeView extends Component {
   componentDidMount() {
     const { location } = this.props;
     const { cards, title } = location.state;
+    const activeCard = 0;
     this.setState({
       title,
       cards,
+      activeCard,
     });
   }
 
   render() {
-    const { title, cards } = this.state;
-    console.log(cards);
+    const { title, cards, activeCard } = this.state;
     return (
       <StyledWrapper>
         <Heading>{title}</Heading>
-        <FlipCard />
+        {cards ? <FlipCard cards={cards} activeCard={activeCard} /> : null}
       </StyledWrapper>
     );
   }

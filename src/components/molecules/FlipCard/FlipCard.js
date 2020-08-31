@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Card from '../../atoms/Card/Card';
 
 const StyledCardContainer = styled.div`
@@ -26,15 +27,27 @@ class FlipCard extends Component {
 
   render() {
     const { isFlipped } = this.state;
+    const { cards, activeCard } = this.props;
+
     return (
       <StyledCardContainer
         className={`${isFlipped ? 'flipped' : ''}`}
         onClick={this.handleCardFlip}
       >
-        <Card isFlipped={isFlipped} />
+        <Card isFlipped={isFlipped} cards={cards} activeCard={activeCard} />
       </StyledCardContainer>
     );
   }
 }
+
+FlipCard.propTypes = {
+  cards: PropTypes.instanceOf(Array),
+  activeCard: PropTypes.number,
+};
+
+FlipCard.defaultProps = {
+  cards: null,
+  activeCard: null,
+};
 
 export default FlipCard;

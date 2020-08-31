@@ -27,7 +27,14 @@ class HomeView extends Component {
           { question: 'What is Git?', answer: 'Version control system', id: 1 },
         ],
       },
-      { title: 'React', id: '1', cards: [] },
+      {
+        title: 'React',
+        id: '1',
+        cards: [
+          { question: 'What is JavaScript?', answer: 'A programming language', id: 0 },
+          { question: 'What is Git?', answer: 'Version control system', id: 1 },
+        ],
+      },
       { title: 'empty' },
       { title: 'empty' },
       { title: 'empty' },
