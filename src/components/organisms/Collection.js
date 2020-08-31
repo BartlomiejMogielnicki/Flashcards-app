@@ -46,7 +46,12 @@ const Collection = ({ title, cardsNum, cards, removeCollection }) => {
             <Button icon="play" />
           </Link>
         )}
-        <Link to="/editor">
+        <Link
+          to={{
+            pathname: '/editor',
+            state: { cards, title },
+          }}
+        >
           <Button icon="edit" />
         </Link>
         <Button icon="delete" removeCollection={() => removeCollection(title)} />

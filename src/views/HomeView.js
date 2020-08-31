@@ -27,6 +27,10 @@ class HomeView extends Component {
           { question: 'What is Git?', answer: 'Version control system', id: 1 },
           { question: 'What is Npm?', answer: 'Node Package Manager', id: 2 },
           { question: 'What is an CSS', answer: 'Cascade Styling Stylesheet', id: 3 },
+          { question: 'What is JavaScript?', answer: 'A programming language', id: 4 },
+          { question: 'What is Git?', answer: 'Version control system', id: 5 },
+          { question: 'What is Npm?', answer: 'Node Package Manager', id: 6 },
+          { question: 'What is an CSS', answer: 'Cascade Styling Stylesheet', id: 7 },
         ],
       },
       {
