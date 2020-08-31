@@ -102,6 +102,7 @@ class HomeView extends Component {
           key={this.handleRandomId()}
           title={collection.title}
           cardsNum={collection.cards.length}
+          cards={collection.cards}
           removeCollection={this.handleRemoveCollection}
         />
       ),

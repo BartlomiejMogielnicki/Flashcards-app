@@ -22,10 +22,12 @@ const Button = ({ icon, addCollection, removeCollection }) => {
   if (buttonType === 'delete') {
     return <StyledButton onClick={removeCollection}>{icons.delete}</StyledButton>;
   }
+  if (buttonType === 'play') {
+    return <StyledButton>{icons.play}</StyledButton>;
+  }
 
   return (
     <StyledButton onClick={addCollection}>
-      {icon === 'play' ? icons.play : null}
       {icon === 'edit' ? icons.edit : null}
       {icon === 'delete' ? icons.delete : null}
       {icon === 'apply' ? icons.apply : null}

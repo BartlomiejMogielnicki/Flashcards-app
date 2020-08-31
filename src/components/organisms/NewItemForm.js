@@ -29,7 +29,12 @@ const NewItemForm = ({ addCollection, title }) => (
     <StyledInputContainer>
       <label>
         Collection name:
-        <Input placeholder="Enter collection name..." value={title} onChange={addCollection} />
+        <Input
+          placeholder="Enter collection name..."
+          value={title}
+          onChange={addCollection}
+          autoFocus
+        />
       </label>
     </StyledInputContainer>
     <StyledButtonContainer>

@@ -10,8 +10,8 @@ const Root = () => (
     <MainTemplate>
       <Switch>
         <Route exact path="/" component={HomeView} />
-        <Route exact path="/practice" component={PracticeView} />
-        <Route exact path="/editor" component={EditorsVies} />
+        <Route path="/practice" component={PracticeView} />
+        <Route path="/editor" component={EditorsVies} />
       </Switch>
     </MainTemplate>
   </BrowserRouter>

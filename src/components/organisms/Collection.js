@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Heading from '../atoms/Heading/Heading';
 import Button from '../atoms/Button/Button';
 import Paragraph from '../atoms/Paragraph/Paragraph';
@@ -24,7 +25,7 @@ const StyledButtonsContainer = styled.div`
   justify-content: space-evenly;
 `;
 
-const Collection = ({ title, cardsNum, removeCollection }) => (
+const Collection = ({ title, cardsNum, cards, removeCollection }) => (
   <StyledWrapper>
     <div>
       <Heading>{title}</Heading>
@@ -32,8 +33,17 @@ const Collection = ({ title, cardsNum, removeCollection }) => (
     </div>
     <StyledCollectionImage />
     <StyledButtonsContainer>
-      <Button icon="play" />
-      <Button icon="edit" />
+      <Link
+        to={{
+          pathname: '/practice',
+          state: { cards, title },
+        }}
+      >
+        <Button icon="play" />
+      </Link>
+      <Link to="/editor">
+        <Button icon="edit" />
+      </Link>
       <Button icon="delete" removeCollection={() => removeCollection(title)} />
     </StyledButtonsContainer>
   </StyledWrapper>
@@ -42,6 +52,7 @@ const Collection = ({ title, cardsNum, removeCollection }) => (
 Collection.propTypes = {
   title: PropTypes.string.isRequired,
   cardsNum: PropTypes.number.isRequired,
+  cards: PropTypes.instanceOf(Array).isRequired,
   removeCollection: PropTypes.func.isRequired,
 };
 

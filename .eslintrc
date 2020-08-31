@@ -10,6 +10,7 @@
   "rules": {
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "react/state-in-constructor": 0,
+    "react/forbid-prop-types": 1,
     "import/no-extraneous-dependencies": 0,
     "jsx-a11y/label-has-associated-control": 1,
     "react/jsx-filename-extension": [
