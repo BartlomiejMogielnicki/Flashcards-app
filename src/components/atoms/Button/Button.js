@@ -8,6 +8,8 @@ const icons = {
   delete: <i className="fas fa-trash" />,
   apply: <i className="fas fa-check" />,
   cancel: <i className="fas fa-times" />,
+  leftArrow: <i className="fas fa-arrow-left" />,
+  rightArrow: <i className="fas fa-arrow-right" />,
 };
 
 const StyledButton = styled.button`
@@ -24,6 +26,12 @@ const Button = ({ icon, addCollection, removeCollection }) => {
   }
   if (buttonType === 'play') {
     return <StyledButton>{icons.play}</StyledButton>;
+  }
+  if (buttonType === 'leftArrow') {
+    return <StyledButton>{icons.leftArrow}</StyledButton>;
+  }
+  if (buttonType === 'rightArrow') {
+    return <StyledButton>{icons.rightArrow}</StyledButton>;
   }
 
   return (
