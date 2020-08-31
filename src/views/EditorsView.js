@@ -27,6 +27,7 @@ const StyledCardItem = styled.li`
   flex-direction: column;
   border: 1px solid rgba(0, 0, 0, 0.3);
   position: relative;
+  cursor: pointer;
 `;
 
 const StyledCard = styled.div`
@@ -57,14 +58,37 @@ const StyledCardNumber = styled.div`
   font-size: 0.8rem;
 `;
 
+const StyledDeleteButton = styled.button`
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 0, 0, 0.7);
+  border: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: 0.3s;
+
+  :hover {
+    background-color: rgba(255, 0, 0, 1);
+  }
+`;
+
 const EditorsView = (props) => {
   const { location } = props;
-  const { cards, title } = location.state;
+  const { cards, title, removeCard } = location.state;
   const importCards = cards.map((card, index) => (
     <StyledCardItem key={card.id}>
       <StyledCard>{card.question}</StyledCard>
       <StyledCard>{card.answer}</StyledCard>
       <StyledCardNumber>{index + 1}</StyledCardNumber>
+      <StyledDeleteButton onClick={() => removeCard()}>x</StyledDeleteButton>
     </StyledCardItem>
   ));
   return (
