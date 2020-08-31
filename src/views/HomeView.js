@@ -25,6 +25,8 @@ class HomeView extends Component {
         cards: [
           { question: 'What is JavaScript?', answer: 'A programming language', id: 0 },
           { question: 'What is Git?', answer: 'Version control system', id: 1 },
+          { question: 'What is Npm?', answer: 'Node Package Manager', id: 2 },
+          { question: 'What is an CSS', answer: 'Cascade Styling Stylesheet', id: 3 },
         ],
       },
       {

@@ -14,13 +14,22 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledButtonsContainer = styled.div`
-  width: 200px;
+  width: 350px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 `;
 
 const StyledParagraph = styled.p``;
+
+const StyledOutsideButton = styled.div``;
+
+const StyledArrowsContainer = styled.div`
+  width: 150px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;
 
 class PracticeView extends Component {
   state = {};
@@ -36,6 +45,26 @@ class PracticeView extends Component {
     });
   }
 
+  handleCardChange = (buttonType) => {
+    let { activeCard } = this.state;
+    const { cards } = this.state;
+    if (buttonType === 'leftArrow') {
+      activeCard -= 1;
+    } else if (buttonType === 'rightArrow') {
+      activeCard += 1;
+    } else if (buttonType === 'random') {
+      activeCard = Math.floor(Math.random() * cards.length);
+    }
+    if (activeCard < 0) {
+      activeCard = 0;
+    } else if (activeCard >= cards.length) {
+      activeCard = cards.length - 1;
+    }
+    this.setState({
+      activeCard,
+    });
+  };
+
   render() {
     const { title, cards, activeCard } = this.state;
     let cardsNum;
@@ -47,11 +76,16 @@ class PracticeView extends Component {
         <Heading>{title}</Heading>
         {cards ? <FlipCard cards={cards} activeCard={activeCard} /> : null}
         <StyledButtonsContainer>
-          <Button icon="leftArrow" />
-          <StyledParagraph>
-            {activeCard + 1} / {cardsNum}
-          </StyledParagraph>
-          <Button icon="rightArrow" />
+          <StyledArrowsContainer>
+            <Button icon="leftArrow" cardChange={this.handleCardChange} />
+            <StyledParagraph>
+              {activeCard + 1} / {cardsNum}
+            </StyledParagraph>
+            <Button icon="rightArrow" cardChange={this.handleCardChange} />
+          </StyledArrowsContainer>
+          <StyledOutsideButton>
+            <Button icon="random" cardChange={this.handleCardChange} />
+          </StyledOutsideButton>
         </StyledButtonsContainer>
       </StyledWrapper>
     );
