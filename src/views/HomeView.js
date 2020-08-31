@@ -19,17 +19,28 @@ const StyledWrapper = styled.div`
 class HomeView extends Component {
   state = {
     collections: [
-      { title: 'JavaScript', id: '0', cards: [] },
+      {
+        title: 'JavaScript',
+        id: '0',
+        cards: [
+          { question: 'What is JavaScript?', answer: 'A programming language', id: 0 },
+          { question: 'What is Git?', answer: 'Version control system', id: 1 },
+        ],
+      },
       { title: 'React', id: '1', cards: [] },
-      { title: 'empty', id: '2', cards: [] },
-      { title: 'empty', id: '3', cards: [] },
-      { title: 'empty', id: '4', cards: [] },
-      { title: 'empty', id: '5', cards: [] },
+      { title: 'empty' },
+      { title: 'empty' },
+      { title: 'empty' },
+      { title: 'empty' },
     ],
     newCollection: {
       showModal: false,
       newTitle: '',
     },
+  };
+
+  handleRandomId = () => {
+    return Math.floor(Math.random() * 1000000);
   };
 
   handleAddCollection = (e) => {
@@ -48,19 +59,19 @@ class HomeView extends Component {
       });
     } else if (e.type === 'submit') {
       const { collections } = this.state;
-      let id;
+      let index;
       for (let i = 0; i < collections.length; i++) {
         if (collections[i].title === 'empty') {
-          id = collections[i].id;
+          index = i;
           break;
         }
       }
       const createdCollection = {
         title: newCollection.newTitle,
-        id,
+        id: this.handleRandomId(),
         cards: [],
       };
-      collections[id] = createdCollection;
+      collections[index] = createdCollection;
       newCollection.showModal = !newCollection.showModal;
       newCollection.newTitle = '';
       this.setState({
@@ -70,16 +81,28 @@ class HomeView extends Component {
     }
   };
 
+  handleRemoveCollection = (collectionTitle) => {
+    let { collections } = this.state;
+    collections = collections.filter((item) => {
+      return item.title !== collectionTitle;
+    });
+    collections.push({ title: 'empty', id: this.handleRandomId(), cards: [] });
+    this.setState({
+      collections,
+    });
+  };
+
   render() {
     const { collections, newCollection } = this.state;
     const cards = collections.map((collection) =>
       collection.title === 'empty' ? (
-        <EmptySlot key={collection.id} clicked={this.handleAddCollection} />
+        <EmptySlot key={this.handleRandomId()} clicked={this.handleAddCollection} />
       ) : (
         <Collection
-          key={collection.id}
+          key={this.handleRandomId()}
           title={collection.title}
           cardsNum={collection.cards.length}
+          removeCollection={this.handleRemoveCollection}
         />
       ),
     );

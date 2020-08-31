@@ -17,24 +17,33 @@ const StyledButton = styled.button`
   font-size: 1.2rem;
 `;
 
-const Button = ({ icon, addCollection }) => (
-  <StyledButton onClick={addCollection}>
-    {icon === 'play' ? icons.play : null}
-    {icon === 'edit' ? icons.edit : null}
-    {icon === 'delete' ? icons.delete : null}
-    {icon === 'apply' ? icons.apply : null}
-    {icon === 'cancel' ? icons.cancel : null}
-  </StyledButton>
-);
+const Button = ({ icon, addCollection, removeCollection }) => {
+  const buttonType = icon;
+  if (buttonType === 'delete') {
+    return <StyledButton onClick={removeCollection}>{icons.delete}</StyledButton>;
+  }
+
+  return (
+    <StyledButton onClick={addCollection}>
+      {icon === 'play' ? icons.play : null}
+      {icon === 'edit' ? icons.edit : null}
+      {icon === 'delete' ? icons.delete : null}
+      {icon === 'apply' ? icons.apply : null}
+      {icon === 'cancel' ? icons.cancel : null}
+    </StyledButton>
+  );
+};
 
 Button.propTypes = {
   icon: PropTypes.string,
   addCollection: PropTypes.func,
+  removeCollection: PropTypes.func,
 };
 
 Button.defaultProps = {
   icon: null,
   addCollection: null,
+  removeCollection: null,
 };
 
 export default Button;

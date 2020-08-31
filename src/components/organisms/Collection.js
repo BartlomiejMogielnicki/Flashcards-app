@@ -24,7 +24,7 @@ const StyledButtonsContainer = styled.div`
   justify-content: space-evenly;
 `;
 
-const Collection = ({ title, cardsNum }) => (
+const Collection = ({ title, cardsNum, removeCollection }) => (
   <StyledWrapper>
     <div>
       <Heading>{title}</Heading>
@@ -34,7 +34,7 @@ const Collection = ({ title, cardsNum }) => (
     <StyledButtonsContainer>
       <Button icon="play" />
       <Button icon="edit" />
-      <Button icon="delete" />
+      <Button icon="delete" removeCollection={() => removeCollection(title)} />
     </StyledButtonsContainer>
   </StyledWrapper>
 );
@@ -42,6 +42,7 @@ const Collection = ({ title, cardsNum }) => (
 Collection.propTypes = {
   title: PropTypes.string.isRequired,
   cardsNum: PropTypes.number.isRequired,
+  removeCollection: PropTypes.func.isRequired,
 };
 
 export default Collection;
