@@ -28,6 +28,9 @@ const Button = ({ icon, addCollection, removeCollection, cardChange }) => {
   if (buttonType === 'play') {
     return <StyledButton>{icons.play}</StyledButton>;
   }
+  if (buttonType === 'play-disabled') {
+    return <StyledButton disabled>{icons.play}</StyledButton>;
+  }
   if (buttonType === 'leftArrow') {
     return <StyledButton onClick={() => cardChange(buttonType)}>{icons.leftArrow}</StyledButton>;
   }

@@ -25,30 +25,35 @@ const StyledButtonsContainer = styled.div`
   justify-content: space-evenly;
 `;
 
-const Collection = ({ title, cardsNum, cards, removeCollection }) => (
-  <StyledWrapper>
-    <div>
-      <Heading>{title}</Heading>
-      <Paragraph>{cardsNum} Cards</Paragraph>
-    </div>
-    <StyledCollectionImage />
-    <StyledButtonsContainer>
-      <Link
-        to={{
-          pathname: '/practice',
-          state: { cards, title },
-        }}
-      >
-        <Button icon="play" />
-      </Link>
-      <Link to="/editor">
-        <Button icon="edit" />
-      </Link>
-      <Button icon="delete" removeCollection={() => removeCollection(title)} />
-    </StyledButtonsContainer>
-  </StyledWrapper>
-);
-
+const Collection = ({ title, cardsNum, cards, removeCollection }) => {
+  return (
+    <StyledWrapper>
+      <div>
+        <Heading>{title}</Heading>
+        <Paragraph>{cardsNum} Cards</Paragraph>
+      </div>
+      <StyledCollectionImage />
+      <StyledButtonsContainer>
+        {cardsNum === 0 ? (
+          <Button icon="play-disabled" />
+        ) : (
+          <Link
+            to={{
+              pathname: '/practice',
+              state: { cards, title },
+            }}
+          >
+            <Button icon="play" />
+          </Link>
+        )}
+        <Link to="/editor">
+          <Button icon="edit" />
+        </Link>
+        <Button icon="delete" removeCollection={() => removeCollection(title)} />
+      </StyledButtonsContainer>
+    </StyledWrapper>
+  );
+};
 Collection.propTypes = {
   title: PropTypes.string.isRequired,
   cardsNum: PropTypes.number.isRequired,
