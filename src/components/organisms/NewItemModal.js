@@ -14,15 +14,25 @@ const StyledWrapper = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-const NewItemModal = ({ addCollection, title }) => (
-  <StyledWrapper>
-    <NewItemForm addCollection={addCollection} title={title} />
-  </StyledWrapper>
-);
+const NewItemModal = ({ addCollection, title, addCard }) => {
+  return (
+    <StyledWrapper>
+      {addCollection ? <NewItemForm addCollection={addCollection} title={title} /> : null}
+      {addCard ? <NewItemForm addCard={addCard} /> : null}
+    </StyledWrapper>
+  );
+};
 
 NewItemModal.propTypes = {
-  addCollection: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
+  addCollection: PropTypes.func,
+  addCard: PropTypes.func,
+  title: PropTypes.string,
+};
+
+NewItemModal.defaultProps = {
+  addCollection: null,
+  addCard: null,
+  title: null,
 };
 
 export default NewItemModal;

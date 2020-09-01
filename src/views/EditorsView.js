@@ -169,7 +169,7 @@ class EditorsView extends Component {
             <Button icon="discard" />
           </Link>
         </StyledControlsContainer>
-        {newCard.showModal ? <NewItemModal /> : null}
+        {newCard.showModal ? <NewItemModal addCard={this.handleCardAdd} /> : null}
       </StyledWrapper>
     );
   }
