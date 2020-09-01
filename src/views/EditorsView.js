@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../components/atoms/Button/Button';
+import EmptySlot from '../components/atoms/EmptySlot/EmptySlot';
 
 const StyledWrapper = styled.div`
   padding: 10px;
@@ -91,16 +92,14 @@ const StyledControlsContainer = styled.div`
 
 class EditorsView extends Component {
   state = {
-    cards: [],
-    title: '',
+    collections: [],
   };
 
   componentDidMount() {
     const { location } = this.props;
-    const { cards, title } = location.state;
+    const { collections } = location.state;
     this.setState({
-      title,
-      cards,
+      collections,
     });
   }
 
@@ -114,25 +113,40 @@ class EditorsView extends Component {
     });
   };
 
+  handleCardAdd = () => {
+    console.log('Card added!');
+  };
+
   render() {
-    const { cards, title } = this.state;
-    const importCards = cards.map((card, index) => (
-      <StyledCardItem key={card.id}>
-        <StyledCard>{card.question}</StyledCard>
-        <StyledCard>{card.answer}</StyledCard>
-        <StyledCardNumber>{index + 1}</StyledCardNumber>
-        <StyledDeleteButton onClick={() => this.handleCardDelete(card.id)}>x</StyledDeleteButton>
-      </StyledCardItem>
-    ));
+    const { location } = this.props;
+    const { title } = location.state;
+    const { collections } = this.state;
+    const collection = collections.filter((item) => {
+      return item.title === title;
+    });
+    let cards;
+    if (collection.cards) {
+      cards = collection.map((card, index) => (
+        <StyledCardItem key={card.id}>
+          <StyledCard>{card.question}</StyledCard>
+          <StyledCard>{card.answer}</StyledCard>
+          <StyledCardNumber>{index + 1}</StyledCardNumber>
+          <StyledDeleteButton onClick={() => this.handleCardDelete(card.id)}>x</StyledDeleteButton>
+        </StyledCardItem>
+      ));
+    }
     return (
       <StyledWrapper>
         <StyledHeading>{title}</StyledHeading>
-        <StyledCardsList>{importCards}</StyledCardsList>
+        <StyledCardsList>
+          {cards}
+          <EmptySlot small clicked={this.handleCardAdd} />
+        </StyledCardsList>
         <StyledControlsContainer>
           <Link
             to={{
               pathname: '/',
-              state: { cards, title },
+              state: { collections },
             }}
           >
             <Button icon="save" />
@@ -151,9 +165,11 @@ class EditorsView extends Component {
 }
 EditorsView.propTypes = {
   location: PropTypes.any,
+  collections: PropTypes.instanceOf(Array),
 };
 
 EditorsView.defaultProps = {
   location: null,
+  collections: null,
 };
 export default EditorsView;

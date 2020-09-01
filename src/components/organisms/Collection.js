@@ -25,7 +25,7 @@ const StyledButtonsContainer = styled.div`
   justify-content: space-evenly;
 `;
 
-const Collection = ({ title, cardsNum, cards, removeCollection }) => {
+const Collection = ({ title, cardsNum, cards, collections, removeCollection }) => {
   return (
     <StyledWrapper>
       <div>
@@ -49,7 +49,7 @@ const Collection = ({ title, cardsNum, cards, removeCollection }) => {
         <Link
           to={{
             pathname: '/editor',
-            state: { cards, title },
+            state: { cards, title, collections },
           }}
         >
           <Button icon="edit" />
@@ -63,6 +63,7 @@ Collection.propTypes = {
   title: PropTypes.string.isRequired,
   cardsNum: PropTypes.number.isRequired,
   cards: PropTypes.instanceOf(Array).isRequired,
+  collections: PropTypes.instanceOf(Array).isRequired,
   removeCollection: PropTypes.func.isRequired,
 };
 

@@ -20,28 +20,8 @@ const StyledWrapper = styled.div`
 class HomeView extends Component {
   state = {
     collections: [
-      {
-        title: 'JavaScript',
-        id: '0',
-        cards: [
-          { question: 'What is JavaScript?', answer: 'A programming language', id: 0 },
-          { question: 'What is Git?', answer: 'Version control system', id: 1 },
-          { question: 'What is Npm?', answer: 'Node Package Manager', id: 2 },
-          { question: 'What is an CSS', answer: 'Cascade Styling Stylesheet', id: 3 },
-          { question: 'What is JavaScript?', answer: 'A programming language', id: 4 },
-          { question: 'What is Git?', answer: 'Version control system', id: 5 },
-          { question: 'What is Npm?', answer: 'Node Package Manager', id: 6 },
-          { question: 'What is an CSS', answer: 'Cascade Styling Stylesheet', id: 7 },
-        ],
-      },
-      {
-        title: 'React',
-        id: '1',
-        cards: [
-          { question: 'What is JavaScript?', answer: 'A programming language', id: 0 },
-          { question: 'What is Git?', answer: 'Version control system', id: 1 },
-        ],
-      },
+      { title: 'empty' },
+      { title: 'empty' },
       { title: 'empty' },
       { title: 'empty' },
       { title: 'empty' },
@@ -54,19 +34,40 @@ class HomeView extends Component {
   };
 
   componentDidMount() {
+    const localStorageCollections = JSON.parse(window.localStorage.getItem('collections'));
     const { location } = this.props;
     if (location.state) {
-      const { cards, title } = location.state;
-      const { collections } = this.state;
-      for (let i = 0; i < collections.length; i++) {
-        if (collections[i].title === title) {
-          collections[i].cards = cards;
-        }
-      }
+      console.log('Data from editorsview');
+      console.log(location.state);
+      const { collections } = location.state;
+      this.setState({
+        collections,
+      });
+    } else if (localStorageCollections !== null) {
+      console.log('Local storage taken!');
+      this.setState({
+        collections: localStorageCollections,
+      });
+    } else {
+      console.log('No local storage!');
+      const collections = [
+        { title: 'empty' },
+        { title: 'empty' },
+        { title: 'empty' },
+        { title: 'empty' },
+        { title: 'empty' },
+        { title: 'empty' },
+      ];
       this.setState({
         collections,
       });
     }
+  }
+
+  componentDidUpdate() {
+    const { collections } = this.state;
+    /* global window */
+    window.localStorage.setItem('collections', JSON.stringify(collections));
   }
 
   handleRandomId = () => {
@@ -133,6 +134,7 @@ class HomeView extends Component {
           title={collection.title}
           cardsNum={collection.cards.length}
           cards={collection.cards}
+          collections={collections}
           removeCollection={this.handleRemoveCollection}
         />
       ),

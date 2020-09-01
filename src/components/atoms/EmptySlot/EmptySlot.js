@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
 const StyledWrapper = styled.div`
@@ -10,6 +10,13 @@ const StyledWrapper = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  ${({ small }) =>
+    small &&
+    css`
+      height: 100%;
+      width: 100%;
+    `}
 `;
 
 const StyledSlotContent = styled.div`
@@ -18,6 +25,12 @@ const StyledSlotContent = styled.div`
   position: relative;
   border-radius: 10px;
   background-color: #555;
+
+  ${({ small }) =>
+    small &&
+    css`
+      height: 100px;
+    `}
 
   ::after {
     content: '';
@@ -28,17 +41,29 @@ const StyledSlotContent = styled.div`
     left: -90px;
     border-radius: 10px;
     background-color: #555;
+
+    ${({ small }) =>
+      small &&
+      css`
+        left: -45px;
+        width: 100px;
+      `}
   }
 `;
 
-const EmptySlot = ({ clicked }) => (
-  <StyledWrapper onClick={clicked}>
-    <StyledSlotContent />
+const EmptySlot = ({ clicked, small }) => (
+  <StyledWrapper small={small} onClick={clicked}>
+    <StyledSlotContent small={small} />
   </StyledWrapper>
 );
 
 EmptySlot.propTypes = {
   clicked: PropTypes.func.isRequired,
+  small: PropTypes.bool,
+};
+
+EmptySlot.defaultProps = {
+  small: false,
 };
 
 export default EmptySlot;
