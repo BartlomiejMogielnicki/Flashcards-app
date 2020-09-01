@@ -40,6 +40,12 @@ const Button = ({ icon, addCollection, removeCollection, cardChange }) => {
   if (buttonType === 'random') {
     return <StyledButton onClick={() => cardChange(buttonType)}>{icons.random}</StyledButton>;
   }
+  if (buttonType === 'save') {
+    return <StyledButton>{icons.apply}</StyledButton>;
+  }
+  if (buttonType === 'discard') {
+    return <StyledButton>{icons.cancel}</StyledButton>;
+  }
 
   return (
     <StyledButton onClick={addCollection}>

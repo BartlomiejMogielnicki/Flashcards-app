@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Button from '../components/atoms/Button/Button';
 
 const StyledWrapper = styled.div`
   padding: 10px;
@@ -80,6 +82,13 @@ const StyledDeleteButton = styled.button`
   }
 `;
 
+const StyledControlsContainer = styled.div`
+  margin: 20px auto;
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+`;
+
 class EditorsView extends Component {
   state = {
     cards: [],
@@ -119,6 +128,23 @@ class EditorsView extends Component {
       <StyledWrapper>
         <StyledHeading>{title}</StyledHeading>
         <StyledCardsList>{importCards}</StyledCardsList>
+        <StyledControlsContainer>
+          <Link
+            to={{
+              pathname: '/',
+              state: { cards, title },
+            }}
+          >
+            <Button icon="save" />
+          </Link>
+          <Link
+            to={{
+              pathname: '/',
+            }}
+          >
+            <Button icon="discard" />
+          </Link>
+        </StyledControlsContainer>
       </StyledWrapper>
     );
   }

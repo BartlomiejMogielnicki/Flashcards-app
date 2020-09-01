@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Collection from '../components/organisms/Collection';
 import EmptySlot from '../components/atoms/EmptySlot/EmptySlot';
@@ -51,6 +52,22 @@ class HomeView extends Component {
       newTitle: '',
     },
   };
+
+  componentDidMount() {
+    const { location } = this.props;
+    if (location.state) {
+      const { cards, title } = location.state;
+      const { collections } = this.state;
+      for (let i = 0; i < collections.length; i++) {
+        if (collections[i].title === title) {
+          collections[i].cards = cards;
+        }
+      }
+      this.setState({
+        collections,
+      });
+    }
+  }
 
   handleRandomId = () => {
     return Math.floor(Math.random() * 1000000);
@@ -130,5 +147,13 @@ class HomeView extends Component {
     );
   }
 }
+
+HomeView.propTypes = {
+  location: PropTypes.any,
+};
+
+HomeView.defaultProps = {
+  location: null,
+};
 
 export default HomeView;
