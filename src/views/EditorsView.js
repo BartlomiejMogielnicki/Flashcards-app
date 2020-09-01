@@ -119,24 +119,69 @@ class EditorsView extends Component {
     });
   };
 
-  handleCardAdd = () => {
+  handleCardAdd = (e, type) => {
+    e.preventDefault();
+
     const { newCard } = this.state;
-    newCard.showModal = true;
-    this.setState({
-      newCard,
-    });
+
+    if (e.type === 'change' && type === 'question') {
+      newCard.cardQuestion = e.target.value;
+      this.setState({
+        newCard,
+      });
+    } else if (e.type === 'change' && type === 'answer') {
+      newCard.cardAnswer = e.target.value;
+      this.setState({
+        newCard,
+      });
+    } else if (e.type === 'click') {
+      newCard.cardQuestion = '';
+      newCard.cardAnswer = '';
+      newCard.showModal = !newCard.showModal;
+      this.setState({
+        newCard,
+      });
+    } else if (e.type === 'submit') {
+      const { collections } = this.state;
+      let index;
+      for (let i = 0; i < collections.length; i++) {
+        if (collections[i].title === type) {
+          index = i;
+          break;
+        }
+      }
+      const createdCard = {
+        question: newCard.cardQuestion,
+        answer: newCard.cardAnswer,
+        id: this.handleRandomId(),
+      };
+      collections[index].cards.push(createdCard);
+      newCard.cardQuestion = '';
+      newCard.cardAnswer = '';
+      newCard.showModal = !newCard.showModal;
+      this.setState({
+        collections,
+      });
+    }
+  };
+
+  handleRandomId = () => {
+    return Math.floor(Math.random() * 1000000);
   };
 
   render() {
     const { location } = this.props;
     const { title } = location.state;
     const { collections, newCard } = this.state;
-    const collection = collections.filter((item) => {
-      return item.title === title;
-    });
+    let collection;
+    for (let i = 0; i < collections.length; i++) {
+      if (collections[i].title === title) {
+        collection = collections[i];
+      }
+    }
     let cards;
-    if (collection.cards) {
-      cards = collection.map((card, index) => (
+    if (collection) {
+      cards = collection.cards.map((card, index) => (
         <StyledCardItem key={card.id}>
           <StyledCard>{card.question}</StyledCard>
           <StyledCard>{card.answer}</StyledCard>
@@ -169,7 +214,14 @@ class EditorsView extends Component {
             <Button icon="discard" />
           </Link>
         </StyledControlsContainer>
-        {newCard.showModal ? <NewItemModal addCard={this.handleCardAdd} /> : null}
+        {newCard.showModal ? (
+          <NewItemModal
+            addCard={this.handleCardAdd}
+            question={newCard.cardQuestion}
+            answer={newCard.cardAnswer}
+            title={title}
+          />
+        ) : null}
       </StyledWrapper>
     );
   }

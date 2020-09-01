@@ -20,7 +20,7 @@ const StyledButton = styled.button`
   font-size: 1.2rem;
 `;
 
-const Button = ({ icon, addCollection, removeCollection, cardChange }) => {
+const Button = ({ icon, addCollection, removeCollection, cardChange, addCard }) => {
   const buttonType = icon;
   if (buttonType === 'delete') {
     return <StyledButton onClick={removeCollection}>{icons.delete}</StyledButton>;
@@ -44,13 +44,12 @@ const Button = ({ icon, addCollection, removeCollection, cardChange }) => {
     return <StyledButton>{icons.apply}</StyledButton>;
   }
   if (buttonType === 'discard') {
-    return <StyledButton>{icons.cancel}</StyledButton>;
+    return <StyledButton onClick={(e) => addCard(e, buttonType)}>{icons.cancel}</StyledButton>;
   }
 
   return (
     <StyledButton onClick={addCollection}>
       {icon === 'edit' ? icons.edit : null}
-      {icon === 'delete' ? icons.delete : null}
       {icon === 'apply' ? icons.apply : null}
       {icon === 'cancel' ? icons.cancel : null}
     </StyledButton>
@@ -62,6 +61,7 @@ Button.propTypes = {
   addCollection: PropTypes.func,
   removeCollection: PropTypes.func,
   cardChange: PropTypes.func,
+  addCard: PropTypes.func,
 };
 
 Button.defaultProps = {
@@ -69,6 +69,7 @@ Button.defaultProps = {
   addCollection: null,
   removeCollection: null,
   cardChange: null,
+  addCard: null,
 };
 
 export default Button;

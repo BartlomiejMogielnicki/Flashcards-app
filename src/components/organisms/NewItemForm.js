@@ -23,7 +23,7 @@ const StyledButtonContainer = styled.div`
   justify-content: space-evenly;
 `;
 
-const NewItemForm = ({ addCollection, title, addCard }) => {
+const NewItemForm = ({ addCollection, title, addCard, question, answer }) => {
   if (addCollection) {
     return (
       <StyledWrapperForm onSubmit={(e) => addCollection(e)}>
@@ -48,23 +48,32 @@ const NewItemForm = ({ addCollection, title, addCard }) => {
   }
   if (addCard) {
     return (
-      <StyledWrapperForm onSubmit={(e) => addCard(e)}>
+      <StyledWrapperForm onSubmit={(e) => addCard(e, title)}>
         <Heading>Add new card</Heading>
         <StyledInputContainer>
           <label>
             Question:
-            <Input placeholder="Enter a question..." value={title} onChange={addCard} autoFocus />
+            <Input
+              placeholder="Enter a question..."
+              value={question}
+              onChange={(e) => addCard(e, 'question')}
+              autoFocus
+            />
           </label>
         </StyledInputContainer>
         <StyledInputContainer>
           <label>
             Answer:
-            <Input placeholder="Enter an answer..." value={title} onChange={addCard} />
+            <Input
+              placeholder="Enter an answer..."
+              value={answer}
+              onChange={(e) => addCard(e, 'answer')}
+            />
           </label>
         </StyledInputContainer>
         <StyledButtonContainer>
-          <Button icon="apply" />
-          <Button icon="cancel" addCard={addCard} />
+          <Button icon="save" title={title} addCard={addCard} />
+          <Button icon="discard" addCard={addCard} />
         </StyledButtonContainer>
       </StyledWrapperForm>
     );
@@ -76,12 +85,16 @@ NewItemForm.propTypes = {
   addCollection: PropTypes.func,
   addCard: PropTypes.func,
   title: PropTypes.string,
+  question: PropTypes.string,
+  answer: PropTypes.string,
 };
 
 NewItemForm.defaultProps = {
   addCollection: null,
   addCard: null,
   title: null,
+  question: null,
+  answer: null,
 };
 
 export default NewItemForm;
