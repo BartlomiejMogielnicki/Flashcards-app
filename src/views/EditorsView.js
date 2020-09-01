@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -80,25 +80,49 @@ const StyledDeleteButton = styled.button`
   }
 `;
 
-const EditorsView = (props) => {
-  const { location } = props;
-  const { cards, title, removeCard } = location.state;
-  const importCards = cards.map((card, index) => (
-    <StyledCardItem key={card.id}>
-      <StyledCard>{card.question}</StyledCard>
-      <StyledCard>{card.answer}</StyledCard>
-      <StyledCardNumber>{index + 1}</StyledCardNumber>
-      <StyledDeleteButton onClick={() => removeCard()}>x</StyledDeleteButton>
-    </StyledCardItem>
-  ));
-  return (
-    <StyledWrapper>
-      <StyledHeading>{title}</StyledHeading>
-      <StyledCardsList>{importCards}</StyledCardsList>
-    </StyledWrapper>
-  );
-};
+class EditorsView extends Component {
+  state = {
+    cards: [],
+    title: '',
+  };
 
+  componentDidMount() {
+    const { location } = this.props;
+    const { cards, title } = location.state;
+    this.setState({
+      title,
+      cards,
+    });
+  }
+
+  handleCardDelete = (cardId) => {
+    let { cards } = this.state;
+    cards = cards.filter((card) => {
+      return card.id !== cardId;
+    });
+    this.setState({
+      cards,
+    });
+  };
+
+  render() {
+    const { cards, title } = this.state;
+    const importCards = cards.map((card, index) => (
+      <StyledCardItem key={card.id}>
+        <StyledCard>{card.question}</StyledCard>
+        <StyledCard>{card.answer}</StyledCard>
+        <StyledCardNumber>{index + 1}</StyledCardNumber>
+        <StyledDeleteButton onClick={() => this.handleCardDelete(card.id)}>x</StyledDeleteButton>
+      </StyledCardItem>
+    ));
+    return (
+      <StyledWrapper>
+        <StyledHeading>{title}</StyledHeading>
+        <StyledCardsList>{importCards}</StyledCardsList>
+      </StyledWrapper>
+    );
+  }
+}
 EditorsView.propTypes = {
   location: PropTypes.any,
 };
