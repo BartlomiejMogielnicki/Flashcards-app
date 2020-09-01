@@ -109,13 +109,20 @@ class EditorsView extends Component {
     });
   }
 
-  handleCardDelete = (cardId) => {
-    let { cards } = this.state;
-    cards = cards.filter((card) => {
+  handleCardDelete = (cardId, title) => {
+    const { collections } = this.state;
+    let index;
+    for (let i = 0; i < collections.length; i++) {
+      if (collections[i].title === title) {
+        index = i;
+      }
+    }
+    const collection = collections[index].cards.filter((card) => {
       return card.id !== cardId;
     });
+    collections[index].cards = collection;
     this.setState({
-      cards,
+      collections,
     });
   };
 
@@ -186,7 +193,9 @@ class EditorsView extends Component {
           <StyledCard>{card.question}</StyledCard>
           <StyledCard>{card.answer}</StyledCard>
           <StyledCardNumber>{index + 1}</StyledCardNumber>
-          <StyledDeleteButton onClick={() => this.handleCardDelete(card.id)}>x</StyledDeleteButton>
+          <StyledDeleteButton onClick={() => this.handleCardDelete(card.id, title)}>
+            x
+          </StyledDeleteButton>
         </StyledCardItem>
       ));
     }
