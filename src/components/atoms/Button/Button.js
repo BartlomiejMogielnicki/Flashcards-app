@@ -43,8 +43,11 @@ const Button = ({ icon, addCollection, removeCollection, cardChange, addCard }) 
   if (buttonType === 'save') {
     return <StyledButton>{icons.apply}</StyledButton>;
   }
-  if (buttonType === 'discard') {
+  if (buttonType === 'discard' && addCard) {
     return <StyledButton onClick={(e) => addCard(e, buttonType)}>{icons.cancel}</StyledButton>;
+  }
+  if (buttonType === 'discard') {
+    return <StyledButton>{icons.cancel}</StyledButton>;
   }
 
   return (

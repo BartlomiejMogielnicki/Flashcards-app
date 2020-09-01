@@ -37,19 +37,15 @@ class HomeView extends Component {
     const localStorageCollections = JSON.parse(window.localStorage.getItem('collections'));
     const { location } = this.props;
     if (location.state) {
-      console.log('Data from editorsview');
-      console.log(location.state);
       const { collections } = location.state;
       this.setState({
         collections,
       });
     } else if (localStorageCollections !== null) {
-      console.log('Local storage taken!');
       this.setState({
         collections: localStorageCollections,
       });
     } else {
-      console.log('No local storage!');
       const collections = [
         { title: 'empty' },
         { title: 'empty' },
