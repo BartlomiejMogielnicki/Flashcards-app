@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../components/atoms/Button/Button';
 import EmptySlot from '../components/atoms/EmptySlot/EmptySlot';
+import NewItemModal from '../components/organisms/NewItemModal';
 
 const StyledWrapper = styled.div`
   padding: 10px;
@@ -93,6 +94,11 @@ const StyledControlsContainer = styled.div`
 class EditorsView extends Component {
   state = {
     collections: [],
+    newCard: {
+      showModal: false,
+      cardQuestion: '',
+      cardAnswer: '',
+    },
   };
 
   componentDidMount() {
@@ -114,13 +120,17 @@ class EditorsView extends Component {
   };
 
   handleCardAdd = () => {
-    console.log('Card added!');
+    const { newCard } = this.state;
+    newCard.showModal = true;
+    this.setState({
+      newCard,
+    });
   };
 
   render() {
     const { location } = this.props;
     const { title } = location.state;
-    const { collections } = this.state;
+    const { collections, newCard } = this.state;
     const collection = collections.filter((item) => {
       return item.title === title;
     });
@@ -159,6 +169,7 @@ class EditorsView extends Component {
             <Button icon="discard" />
           </Link>
         </StyledControlsContainer>
+        {newCard.showModal ? <NewItemModal /> : null}
       </StyledWrapper>
     );
   }

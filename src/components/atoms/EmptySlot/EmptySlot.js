@@ -20,7 +20,7 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledSlotContent = styled.div`
-  height: 200px;
+  height: 150px;
   width: 5px;
   position: relative;
   border-radius: 10px;
@@ -35,10 +35,10 @@ const StyledSlotContent = styled.div`
   ::after {
     content: '';
     height: 5px;
-    width: 200px;
+    width: 150px;
     position: absolute;
     top: 50%;
-    left: -90px;
+    left: -70px;
     border-radius: 10px;
     background-color: #555;
 
