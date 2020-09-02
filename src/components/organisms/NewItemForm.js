@@ -15,6 +15,7 @@ const StyledWrapperForm = styled.form`
 
 const StyledInputContainer = styled.div`
   margin: 0 auto;
+  min-height: 80px;
 `;
 
 const StyledButtonContainer = styled.div`
@@ -23,7 +24,21 @@ const StyledButtonContainer = styled.div`
   justify-content: space-evenly;
 `;
 
-const NewItemForm = ({ addCollection, title, addCard, question, answer }) => {
+const StyledErrorMessage = styled.p`
+  margin: 5px 0 0 5px;
+  color: red;
+  font-size: 0.7rem;
+`;
+
+const NewItemForm = ({
+  addCollection,
+  title,
+  errorMessage,
+  showError,
+  addCard,
+  question,
+  answer,
+}) => {
   if (addCollection) {
     return (
       <StyledWrapperForm onSubmit={(e) => addCollection(e)}>
@@ -37,6 +52,7 @@ const NewItemForm = ({ addCollection, title, addCard, question, answer }) => {
               onChange={addCollection}
               autoFocus
             />
+            {showError && <StyledErrorMessage>{errorMessage}</StyledErrorMessage>}
           </label>
         </StyledInputContainer>
         <StyledButtonContainer>
@@ -85,6 +101,8 @@ NewItemForm.propTypes = {
   addCollection: PropTypes.func,
   addCard: PropTypes.func,
   title: PropTypes.string,
+  errorMessage: PropTypes.string,
+  showError: PropTypes.bool,
   question: PropTypes.string,
   answer: PropTypes.string,
 };
@@ -93,6 +111,8 @@ NewItemForm.defaultProps = {
   addCollection: null,
   addCard: null,
   title: null,
+  showError: false,
+  errorMessage: null,
   question: null,
   answer: null,
 };

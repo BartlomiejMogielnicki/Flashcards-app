@@ -30,6 +30,8 @@ class HomeView extends Component {
     newCollection: {
       showModal: false,
       newTitle: '',
+      showError: false,
+      errorMessage: '',
     },
   };
 
@@ -87,24 +89,41 @@ class HomeView extends Component {
     } else if (e.type === 'submit') {
       const { collections } = this.state;
       let index;
+      if (newCollection.newTitle === '') {
+        newCollection.errorMessage = 'Please enter name collection';
+        newCollection.showError = true;
+        this.setState({
+          newCollection,
+        });
+        return;
+      }
       for (let i = 0; i < collections.length; i++) {
-        if (collections[i].title === 'empty') {
+        if (collections[i].title === newCollection.newTitle) {
+          newCollection.errorMessage = 'Name is already taken';
+          newCollection.showError = true;
+          this.setState({
+            newCollection,
+          });
+          break;
+        } else if (collections[i].title === 'empty') {
           index = i;
+          const createdCollection = {
+            title: newCollection.newTitle,
+            id: this.handleRandomId(),
+            cards: [],
+          };
+          collections[index] = createdCollection;
+          newCollection.showModal = !newCollection.showModal;
+          newCollection.newTitle = '';
+          newCollection.errorMessage = '';
+          newCollection.showError = false;
+          this.setState({
+            collections,
+            newCollection,
+          });
           break;
         }
       }
-      const createdCollection = {
-        title: newCollection.newTitle,
-        id: this.handleRandomId(),
-        cards: [],
-      };
-      collections[index] = createdCollection;
-      newCollection.showModal = !newCollection.showModal;
-      newCollection.newTitle = '';
-      this.setState({
-        collections,
-        newCollection,
-      });
     }
   };
 
@@ -139,7 +158,12 @@ class HomeView extends Component {
       <StyledWrapper>
         {cards}
         {newCollection.showModal ? (
-          <NewItemModal addCollection={this.handleAddCollection} title={newCollection.newTitle} />
+          <NewItemModal
+            addCollection={this.handleAddCollection}
+            title={newCollection.newTitle}
+            errorMessage={newCollection.errorMessage}
+            showError={newCollection.showError}
+          />
         ) : null}
       </StyledWrapper>
     );

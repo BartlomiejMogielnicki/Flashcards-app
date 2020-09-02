@@ -14,10 +14,25 @@ const StyledWrapper = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-const NewItemModal = ({ addCollection, title, addCard, question, answer }) => {
+const NewItemModal = ({
+  addCollection,
+  title,
+  errorMessage,
+  showError,
+  addCard,
+  question,
+  answer,
+}) => {
   return (
     <StyledWrapper>
-      {addCollection ? <NewItemForm addCollection={addCollection} title={title} /> : null}
+      {addCollection ? (
+        <NewItemForm
+          addCollection={addCollection}
+          title={title}
+          errorMessage={errorMessage}
+          showError={showError}
+        />
+      ) : null}
       {addCard ? (
         <NewItemForm addCard={addCard} question={question} answer={answer} title={title} />
       ) : null}
@@ -29,6 +44,8 @@ NewItemModal.propTypes = {
   addCollection: PropTypes.func,
   addCard: PropTypes.func,
   title: PropTypes.string,
+  errorMessage: PropTypes.string,
+  showError: PropTypes.bool,
   question: PropTypes.string,
   answer: PropTypes.string,
 };
@@ -37,6 +54,8 @@ NewItemModal.defaultProps = {
   addCollection: null,
   addCard: null,
   title: null,
+  showError: false,
+  errorMessage: null,
   question: null,
   answer: null,
 };
