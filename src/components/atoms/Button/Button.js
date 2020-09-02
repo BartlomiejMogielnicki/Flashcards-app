@@ -12,6 +12,7 @@ const icons = {
   rightArrow: <i className="fas fa-arrow-right" />,
   random: <i className="fas fa-random" />,
   plus: <i className="fas fa-plus" />,
+  home: <i className="fas fa-home" />,
 };
 
 const StyledButton = styled.button`
@@ -43,6 +44,9 @@ const Button = ({ icon, addCollection, removeCollection, cardChange, addCard, ca
   }
   if (buttonType === 'save') {
     return <StyledButton>{icons.apply}</StyledButton>;
+  }
+  if (buttonType === 'home') {
+    return <StyledButton>{icons.home}</StyledButton>;
   }
   if (buttonType === 'discard' && addCard) {
     return <StyledButton onClick={(e) => addCard(e, buttonType)}>{icons.cancel}</StyledButton>;

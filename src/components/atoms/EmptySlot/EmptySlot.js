@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const StyledWrapper = styled.div`
   width: 250px;
   height: 300px;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +15,9 @@ const StyledWrapper = styled.div`
     small &&
     css`
       height: 100%;
+      min-height: 210px;
       width: 100%;
+      min-width: 170px;
     `}
 `;
 
@@ -24,7 +26,7 @@ const StyledSlotContent = styled.div`
   width: 5px;
   position: relative;
   border-radius: 10px;
-  background-color: #555;
+  background-color: #aaa;
 
   ${({ small }) =>
     small &&
@@ -40,7 +42,7 @@ const StyledSlotContent = styled.div`
     top: 50%;
     left: -70px;
     border-radius: 10px;
-    background-color: #555;
+    background-color: #aaa;
 
     ${({ small }) =>
       small &&

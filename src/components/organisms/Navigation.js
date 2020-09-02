@@ -24,8 +24,8 @@ const Navigation = () => (
   <StyledNavWrapper>
     <StyledLinksList>
       <li>
-        <NavLink to="/">
-          <Button text="Home" />
+        <NavLink to="/home">
+          <Button icon="home" />
         </NavLink>
       </li>
     </StyledLinksList>

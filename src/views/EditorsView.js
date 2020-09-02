@@ -7,9 +7,12 @@ import EmptySlot from '../components/atoms/EmptySlot/EmptySlot';
 import NewItemModal from '../components/organisms/NewItemModal';
 
 const StyledWrapper = styled.div`
-  padding: 10px;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 `;
 
 const StyledHeading = styled.h2`
@@ -23,12 +26,14 @@ const StyledCardsList = styled.ul`
   grid-template-rows: repeat(auto-fill, 210px);
   grid-gap: 20px 40px;
   justify-content: center;
+  justify-items: center;
 `;
 
 const StyledCardItem = styled.li`
   width: 170px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   border: 1px solid rgba(0, 0, 0, 0.3);
   position: relative;
   cursor: pointer;
@@ -233,7 +238,7 @@ class EditorsView extends Component {
         <StyledControlsContainer>
           <Link
             to={{
-              pathname: '/',
+              pathname: '/home',
               state: { collections },
             }}
           >
@@ -241,7 +246,7 @@ class EditorsView extends Component {
           </Link>
           <Link
             to={{
-              pathname: '/',
+              pathname: '/home',
             }}
           >
             <Button icon="discard" />
