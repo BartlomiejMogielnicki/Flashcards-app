@@ -98,6 +98,8 @@ class EditorsView extends Component {
       showModal: false,
       cardQuestion: '',
       cardAnswer: '',
+      showQuestionError: false,
+      showAnswerError: false,
     },
   };
 
@@ -151,24 +153,46 @@ class EditorsView extends Component {
     } else if (e.type === 'submit') {
       const { collections } = this.state;
       let index;
-      for (let i = 0; i < collections.length; i++) {
-        if (collections[i].title === type) {
-          index = i;
-          break;
+      if (newCard.cardQuestion === '' && newCard.cardAnswer === '') {
+        newCard.showQuestionError = true;
+        newCard.showAnswerError = true;
+        this.setState({
+          newCard,
+        });
+      } else if (newCard.cardQuestion === '') {
+        newCard.showQuestionError = true;
+        newCard.showAnswerError = false;
+        this.setState({
+          newCard,
+        });
+      } else if (newCard.cardAnswer === '') {
+        newCard.showAnswerError = true;
+        newCard.showQuestionError = false;
+        this.setState({
+          newCard,
+        });
+      } else {
+        for (let i = 0; i < collections.length; i++) {
+          if (collections[i].title === type) {
+            index = i;
+            break;
+          }
         }
+        const createdCard = {
+          question: newCard.cardQuestion,
+          answer: newCard.cardAnswer,
+          id: this.handleRandomId(),
+        };
+        collections[index].cards.push(createdCard);
+        newCard.cardQuestion = '';
+        newCard.cardAnswer = '';
+        newCard.showQuestionError = false;
+        newCard.showAnswerError = false;
+        newCard.showModal = !newCard.showModal;
+        this.setState({
+          collections,
+        });
       }
-      const createdCard = {
-        question: newCard.cardQuestion,
-        answer: newCard.cardAnswer,
-        id: this.handleRandomId(),
-      };
-      collections[index].cards.push(createdCard);
-      newCard.cardQuestion = '';
-      newCard.cardAnswer = '';
-      newCard.showModal = !newCard.showModal;
-      this.setState({
-        collections,
-      });
     }
   };
 
@@ -229,6 +253,8 @@ class EditorsView extends Component {
             question={newCard.cardQuestion}
             answer={newCard.cardAnswer}
             title={title}
+            showQuestionError={newCard.showQuestionError}
+            showAnswerError={newCard.showAnswerError}
           />
         ) : null}
       </StyledWrapper>

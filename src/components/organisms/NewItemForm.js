@@ -38,6 +38,8 @@ const NewItemForm = ({
   addCard,
   question,
   answer,
+  showQuestionError,
+  showAnswerError,
 }) => {
   if (addCollection) {
     return (
@@ -75,6 +77,7 @@ const NewItemForm = ({
               onChange={(e) => addCard(e, 'question')}
               autoFocus
             />
+            {showQuestionError && <StyledErrorMessage>Please enter a question</StyledErrorMessage>}
           </label>
         </StyledInputContainer>
         <StyledInputContainer>
@@ -85,6 +88,7 @@ const NewItemForm = ({
               value={answer}
               onChange={(e) => addCard(e, 'answer')}
             />
+            {showAnswerError && <StyledErrorMessage>Please enter an answer</StyledErrorMessage>}
           </label>
         </StyledInputContainer>
         <StyledButtonContainer>
@@ -105,6 +109,8 @@ NewItemForm.propTypes = {
   showError: PropTypes.bool,
   question: PropTypes.string,
   answer: PropTypes.string,
+  showQuestionError: PropTypes.bool,
+  showAnswerError: PropTypes.bool,
 };
 
 NewItemForm.defaultProps = {
@@ -115,6 +121,8 @@ NewItemForm.defaultProps = {
   errorMessage: null,
   question: null,
   answer: null,
+  showQuestionError: null,
+  showAnswerError: null,
 };
 
 export default NewItemForm;
