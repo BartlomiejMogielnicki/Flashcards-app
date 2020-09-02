@@ -11,6 +11,7 @@ const icons = {
   leftArrow: <i className="fas fa-arrow-left" />,
   rightArrow: <i className="fas fa-arrow-right" />,
   random: <i className="fas fa-random" />,
+  plus: <i className="fas fa-plus" />,
 };
 
 const StyledButton = styled.button`
@@ -20,7 +21,7 @@ const StyledButton = styled.button`
   font-size: 1.2rem;
 `;
 
-const Button = ({ icon, addCollection, removeCollection, cardChange, addCard }) => {
+const Button = ({ icon, addCollection, removeCollection, cardChange, addCard, cardsNum }) => {
   const buttonType = icon;
   if (buttonType === 'delete') {
     return <StyledButton onClick={removeCollection}>{icons.delete}</StyledButton>;
@@ -49,10 +50,15 @@ const Button = ({ icon, addCollection, removeCollection, cardChange, addCard }) 
   if (buttonType === 'discard') {
     return <StyledButton>{icons.cancel}</StyledButton>;
   }
+  if (buttonType === 'edit' && cardsNum === 0) {
+    return <StyledButton onClick={addCollection}>{icons.plus}</StyledButton>;
+  }
+  if (buttonType === 'edit') {
+    return <StyledButton onClick={addCollection}>{icons.edit}</StyledButton>;
+  }
 
   return (
     <StyledButton onClick={addCollection}>
-      {icon === 'edit' ? icons.edit : null}
       {icon === 'apply' ? icons.apply : null}
       {icon === 'cancel' ? icons.cancel : null}
     </StyledButton>
@@ -65,6 +71,7 @@ Button.propTypes = {
   removeCollection: PropTypes.func,
   cardChange: PropTypes.func,
   addCard: PropTypes.func,
+  cardsNum: PropTypes.number,
 };
 
 Button.defaultProps = {
@@ -73,6 +80,7 @@ Button.defaultProps = {
   removeCollection: null,
   cardChange: null,
   addCard: null,
+  cardsNum: null,
 };
 
 export default Button;

@@ -52,7 +52,7 @@ const Collection = ({ title, cardsNum, cards, collections, removeCollection }) =
             state: { cards, title, collections },
           }}
         >
-          <Button icon="edit" />
+          <Button icon="edit" cardsNum={cardsNum} />
         </Link>
         <Button icon="delete" removeCollection={() => removeCollection(title)} />
       </StyledButtonsContainer>
