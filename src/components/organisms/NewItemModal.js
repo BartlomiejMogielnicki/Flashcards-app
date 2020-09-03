@@ -24,18 +24,19 @@ const NewItemModal = ({
   answer,
   showQuestionError,
   showAnswerError,
+  removeCollection,
 }) => {
   return (
     <StyledWrapper>
-      {addCollection ? (
+      {addCollection && (
         <NewItemForm
           addCollection={addCollection}
           title={title}
           errorMessage={errorMessage}
           showError={showError}
         />
-      ) : null}
-      {addCard ? (
+      )}
+      {addCard && (
         <NewItemForm
           addCard={addCard}
           question={question}
@@ -46,7 +47,8 @@ const NewItemModal = ({
           showQuestionError={showQuestionError}
           showAnswerError={showAnswerError}
         />
-      ) : null}
+      )}
+      {removeCollection && <NewItemForm title={title} removeCollection={removeCollection} />}
     </StyledWrapper>
   );
 };
@@ -61,6 +63,7 @@ NewItemModal.propTypes = {
   answer: PropTypes.string,
   showQuestionError: PropTypes.bool,
   showAnswerError: PropTypes.bool,
+  removeCollection: PropTypes.func,
 };
 
 NewItemModal.defaultProps = {
@@ -73,6 +76,7 @@ NewItemModal.defaultProps = {
   answer: null,
   showQuestionError: null,
   showAnswerError: null,
+  removeCollection: null,
 };
 
 export default NewItemModal;

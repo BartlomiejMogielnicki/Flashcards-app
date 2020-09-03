@@ -26,10 +26,26 @@ const StylledStartButton = styled(StyledButton)`
   width: 80px;
 `;
 
-const Button = ({ icon, addCollection, removeCollection, cardChange, addCard, cardsNum }) => {
+const Button = ({
+  icon,
+  addCollection,
+  removeCollection,
+  cardChange,
+  addCard,
+  cardsNum,
+  title,
+}) => {
   const buttonType = icon;
   if (buttonType === 'delete') {
-    return <StyledButton onClick={removeCollection}>{icons.delete}</StyledButton>;
+    return <StyledButton onClick={(e) => removeCollection(e, title)}>{icons.delete}</StyledButton>;
+  }
+  if (buttonType === 'applyDelete') {
+    return <StyledButton>{icons.apply}</StyledButton>;
+  }
+  if (buttonType === 'cancelDelete') {
+    return (
+      <StyledButton onClick={(e) => removeCollection(e, buttonType)}>{icons.cancel}</StyledButton>
+    );
   }
   if (buttonType === 'play') {
     return <StyledButton>{icons.play}</StyledButton>;
@@ -83,6 +99,7 @@ Button.propTypes = {
   cardChange: PropTypes.func,
   addCard: PropTypes.func,
   cardsNum: PropTypes.number,
+  title: PropTypes.string,
 };
 
 Button.defaultProps = {
@@ -92,6 +109,7 @@ Button.defaultProps = {
   cardChange: null,
   addCard: null,
   cardsNum: null,
+  title: null,
 };
 
 export default Button;

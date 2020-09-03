@@ -34,6 +34,10 @@ class HomeView extends Component {
       showError: false,
       errorMessage: '',
     },
+    deleteCollection: {
+      showModal: false,
+      targetTitle: '',
+    },
   };
 
   componentDidMount() {
@@ -128,19 +132,40 @@ class HomeView extends Component {
     }
   };
 
-  handleRemoveCollection = (collectionTitle) => {
+  handleRemoveCollection = (e, collectionTitle) => {
+    const { deleteCollection } = this.state;
+    if (collectionTitle) {
+      deleteCollection.targetTitle = collectionTitle;
+      this.setState({
+        deleteCollection,
+      });
+    }
+    e.preventDefault();
     let { collections } = this.state;
-    collections = collections.filter((item) => {
-      return item.title !== collectionTitle;
-    });
-    collections.push({ title: 'empty', id: this.handleRandomId(), cards: [] });
+    deleteCollection.showModal = true;
     this.setState({
-      collections,
+      deleteCollection,
     });
+    if (e.type === 'click' && collectionTitle === 'cancelDelete') {
+      deleteCollection.showModal = false;
+      this.setState({
+        deleteCollection,
+      });
+    } else if (e.type === 'submit') {
+      collections = collections.filter((item) => {
+        return item.title !== deleteCollection.targetTitle;
+      });
+      collections.push({ title: 'empty', id: this.handleRandomId(), cards: [] });
+      deleteCollection.showModal = false;
+      this.setState({
+        collections,
+        deleteCollection,
+      });
+    }
   };
 
   render() {
-    const { collections, newCollection } = this.state;
+    const { collections, newCollection, deleteCollection } = this.state;
     const cards = collections.map((collection) =>
       collection.title === 'empty' ? (
         <EmptySlot key={this.handleRandomId()} clicked={this.handleAddCollection} />
@@ -158,14 +183,17 @@ class HomeView extends Component {
     return (
       <StyledWrapper>
         {cards}
-        {newCollection.showModal ? (
+        {newCollection.showModal && (
           <NewItemModal
             addCollection={this.handleAddCollection}
             title={newCollection.newTitle}
             errorMessage={newCollection.errorMessage}
             showError={newCollection.showError}
           />
-        ) : null}
+        )}
+        {deleteCollection.showModal && (
+          <NewItemModal removeCollection={this.handleRemoveCollection} />
+        )}
       </StyledWrapper>
     );
   }

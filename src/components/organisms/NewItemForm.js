@@ -40,6 +40,7 @@ const NewItemForm = ({
   answer,
   showQuestionError,
   showAnswerError,
+  removeCollection,
 }) => {
   if (addCollection) {
     return (
@@ -98,6 +99,17 @@ const NewItemForm = ({
       </StyledWrapperForm>
     );
   }
+  if (removeCollection) {
+    return (
+      <StyledWrapperForm onSubmit={(e) => removeCollection(e)}>
+        <Heading>Are you sure?</Heading>
+        <StyledButtonContainer>
+          <Button icon="applyDelete" />
+          <Button icon="cancelDelete" removeCollection={removeCollection} />
+        </StyledButtonContainer>
+      </StyledWrapperForm>
+    );
+  }
   return false;
 };
 
@@ -111,6 +123,7 @@ NewItemForm.propTypes = {
   answer: PropTypes.string,
   showQuestionError: PropTypes.bool,
   showAnswerError: PropTypes.bool,
+  removeCollection: PropTypes.func,
 };
 
 NewItemForm.defaultProps = {
@@ -123,6 +136,7 @@ NewItemForm.defaultProps = {
   answer: null,
   showQuestionError: null,
   showAnswerError: null,
+  removeCollection: null,
 };
 
 export default NewItemForm;

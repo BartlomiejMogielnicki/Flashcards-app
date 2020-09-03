@@ -54,7 +54,7 @@ const Collection = ({ title, cardsNum, cards, collections, removeCollection }) =
         >
           <Button icon="edit" cardsNum={cardsNum} />
         </Link>
-        <Button icon="delete" removeCollection={() => removeCollection(title)} />
+        <Button icon="delete" removeCollection={removeCollection} title={title} />
       </StyledButtonsContainer>
     </StyledWrapper>
   );
