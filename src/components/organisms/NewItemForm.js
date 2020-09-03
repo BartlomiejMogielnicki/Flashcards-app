@@ -25,9 +25,9 @@ const StyledButtonContainer = styled.div`
 `;
 
 const StyledErrorMessage = styled.p`
-  margin: 5px 0 0 5px;
-  color: red;
-  font-size: 0.7rem;
+  margin: 5px 0 0 2px;
+  color: black;
+  font-size: 0.8rem;
 `;
 
 const NewItemForm = ({

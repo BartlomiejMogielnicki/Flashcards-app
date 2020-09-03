@@ -1,18 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import GlobalStyles from '../theme/GlobalStyle';
 import theme from '../theme/MainTheme';
 import Navigation from '../components/organisms/Navigation';
 
+const StyledWrapper = styled.div`
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 75px 1fr;
+  background-color: black;
+`;
+
 const MainTemplate = ({ children }) => (
-  <div>
-    <GlobalStyles />
-    <ThemeProvider theme={theme}>
+  <ThemeProvider theme={theme}>
+    <StyledWrapper>
+      <GlobalStyles />
       <Navigation />
       {children}
-    </ThemeProvider>
-  </div>
+    </StyledWrapper>
+  </ThemeProvider>
 );
 
 MainTemplate.propTypes = {

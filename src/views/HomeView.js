@@ -6,8 +6,8 @@ import EmptySlot from '../components/atoms/EmptySlot/EmptySlot';
 import NewItemModal from '../components/organisms/NewItemModal';
 
 const StyledWrapper = styled.div`
-  margin: 10px auto 0;
-  padding: 10px;
+  margin: 0 auto;
+  padding-top: 50px;
   max-width: 1000px;
   display: grid;
   grid-template-columns: repeat(auto-fill, 250px);

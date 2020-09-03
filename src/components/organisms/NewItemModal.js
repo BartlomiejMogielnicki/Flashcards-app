@@ -10,8 +10,12 @@ const StyledWrapper = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  background-color: lightgray;
+  background-color: ${({ theme }) => theme.tertiaryColor};
   transform: translate(-50%, -50%);
+  color: white;
+  border: 2px solid #555;
+  border-radius: 20px;
+  box-shadow: 0 0 5px 2px black;
 `;
 
 const NewItemModal = ({

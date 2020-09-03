@@ -1,23 +1,18 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import startBackground from '../assets/images/startBackground.jpg';
 import Button from '../components/atoms/Button/Button';
 
 const StyledWrapper = styled.div`
   height: 100vh;
   width: 100%;
-  background-image: url(${startBackground});
-  background-color: white;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 0;
+  background-color: white;
 
-  ::after {
+  /* ::after {
     content: '';
     position: absolute;
     top: 0;
@@ -26,7 +21,7 @@ const StyledWrapper = styled.div`
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.1);
     z-index: 0;
-  }
+  } */
 `;
 
 const StyledTitleWrapper = styled.div`

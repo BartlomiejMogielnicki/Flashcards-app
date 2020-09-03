@@ -60,16 +60,14 @@ const StyledCardText = styled.p`
 const Card = ({ isFlipped, cards, activeCard }) => {
   const { question, answer } = cards[activeCard];
   return (
-    <>
-      <StyledCard className={`${isFlipped ? 'flipped' : ''}`}>
-        <StyledCardFront className={`${isFlipped ? 'flipped' : ''}`}>
-          <StyledCardText>{question}</StyledCardText>
-        </StyledCardFront>
-        <StyledCardBack className={`${isFlipped ? 'flipped' : ''}`}>
-          <StyledCardText>{answer}</StyledCardText>
-        </StyledCardBack>
-      </StyledCard>
-    </>
+    <StyledCard className={`${isFlipped ? 'flipped' : ''}`}>
+      <StyledCardFront className={`${isFlipped ? 'flipped' : ''}`}>
+        <StyledCardText>{question}</StyledCardText>
+      </StyledCardFront>
+      <StyledCardBack className={`${isFlipped ? 'flipped' : ''}`}>
+        <StyledCardText>{answer}</StyledCardText>
+      </StyledCardBack>
+    </StyledCard>
   );
 };
 

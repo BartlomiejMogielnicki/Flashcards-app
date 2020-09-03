@@ -9,10 +9,10 @@ import NewItemModal from '../components/organisms/NewItemModal';
 const StyledWrapper = styled.div`
   margin: 0 auto;
   padding: 20px;
+  width: 100%;
   max-width: 1200px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 `;
 
 const StyledHeading = styled.h2`
@@ -36,6 +36,7 @@ const StyledCardItem = styled.li`
   align-items: center;
   border: 1px solid rgba(0, 0, 0, 0.3);
   position: relative;
+  border: 2px solid #555;
 `;
 
 const StyledCard = styled.div`
@@ -49,6 +50,7 @@ const StyledCard = styled.div`
   align-items: center;
   text-align: center;
   font-size: 0.8rem;
+  background-color: white;
 `;
 
 const StyledCardNumber = styled.div`
@@ -61,8 +63,9 @@ const StyledCardNumber = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #777;
+  background-color: ${({ theme }) => theme.tertiaryColor};
   color: white;
+  font-weight: bold;
   font-size: 0.8rem;
 `;
 

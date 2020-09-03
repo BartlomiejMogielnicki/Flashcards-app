@@ -6,11 +6,26 @@ import FlipCard from '../components/molecules/FlipCard/FlipCard';
 import Button from '../components/atoms/Button/Button';
 
 const StyledWrapper = styled.div`
-  height: 80vh;
+  padding-bottom: 150px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  background-color: black;
+`;
+
+const StyledHeading = styled(Heading)`
+  color: white;
+`;
+
+const StyledCardContainer = styled.div`
+  width: 600px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 0 10px 10px white;
 `;
 
 const StyledButtonsContainer = styled.div`
@@ -20,7 +35,9 @@ const StyledButtonsContainer = styled.div`
   align-items: center;
 `;
 
-const StyledParagraph = styled.p``;
+const StyledParagraph = styled.p`
+  color: white;
+`;
 
 const StyledOutsideButton = styled.div``;
 
@@ -75,8 +92,12 @@ class PracticeView extends Component {
     }
     return (
       <StyledWrapper>
-        <Heading>{title}</Heading>
-        {cards ? <FlipCard cards={cards} activeCard={activeCard} /> : null}
+        <StyledHeading>{title}</StyledHeading>
+        {cards ? (
+          <StyledCardContainer>
+            <FlipCard cards={cards} activeCard={activeCard} />
+          </StyledCardContainer>
+        ) : null}
         <StyledButtonsContainer>
           <StyledArrowsContainer>
             <Button icon="leftArrow" cardChange={this.handleCardChange} />

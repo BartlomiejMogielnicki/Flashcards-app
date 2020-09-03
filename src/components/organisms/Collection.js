@@ -16,6 +16,8 @@ const StyledWrapper = styled.div`
   justify-content: center;
   border: 1px solid black;
   text-align: center;
+  color: white;
+  border: 2px solid #555;
 `;
 
 const StyledCollectionImage = styled.div``;

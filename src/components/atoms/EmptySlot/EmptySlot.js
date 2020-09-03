@@ -10,6 +10,7 @@ const StyledWrapper = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  border: 2px solid #555;
 
   ${({ small }) =>
     small &&
@@ -26,7 +27,7 @@ const StyledSlotContent = styled.div`
   width: 5px;
   position: relative;
   border-radius: 10px;
-  background-color: #aaa;
+  background-color: #555;
 
   ${({ small }) =>
     small &&
@@ -42,7 +43,7 @@ const StyledSlotContent = styled.div`
     top: 50%;
     left: -70px;
     border-radius: 10px;
-    background-color: #aaa;
+    background-color: #555;
 
     ${({ small }) =>
       small &&

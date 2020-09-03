@@ -7,8 +7,8 @@ const StyledCardContainer = styled.div`
   perspective: 1000px;
   width: 500px;
   height: 300px;
-  margin-top: 10px;
   position: relative;
+  background-color: white;
   cursor: pointer;
   text-align: center;
 `;
