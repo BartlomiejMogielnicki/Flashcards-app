@@ -18,6 +18,14 @@ class FlipCard extends Component {
     isFlipped: false,
   };
 
+  componentDidUpdate(nextProps) {
+    const { activeCard } = this.props;
+    const { isFlipped } = this.state;
+    if (nextProps.activeCard !== activeCard && isFlipped === true) {
+      this.handleCardFlip();
+    }
+  }
+
   handleCardFlip = () => {
     const { isFlipped } = this.state;
     this.setState({

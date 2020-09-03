@@ -110,6 +110,7 @@ const StyledCardSecondBack = styled(StyledCardBack)`
   transform: scaleY(-1) rotateX(180deg);
   text-align: center;
   font-size: 1.2rem;
+  box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 1);
 `;
 
 const StyledStartCardsWrapper = styled.div`
