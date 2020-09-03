@@ -24,7 +24,7 @@ const StyledWrapper = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.1);
     z-index: 0;
   }
 `;
@@ -55,9 +55,14 @@ const StyledLetterCard = styled.div`
   }
 `;
 
+const StyledStartCard = styled(StyledLetterCard)`
+  width: 300px;
+  height: 150px;
+`;
+
 const StyledCardFront = styled.div`
-  width: 75px;
-  height: 125px;
+  width: 100%;
+  height: 100%;
   &.showed {
     display: none;
   }
@@ -79,58 +84,11 @@ const StyledCardBack = styled.div`
   }
 `;
 
-const StyledCardLetter = styled.p``;
-
-const StyledStartCardsWrapper = styled.div`
-  perspective: 1000px;
-  position: absolute;
-  bottom: 50px;
-  right: 50px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-gap: 40px;
-  z-index: 1;
-`;
-
-const StyledStartCard = styled.div`
-  width: 300px;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: 0.3s ease;
-
-  &.flipped {
-    transform: rotateX(180deg);
-    box-shadow: 3px -3px 5px 1px rgba(0, 0, 0, 1);
-  }
-`;
-
-const StyledStartCardFront = styled.div`
+const StyledStartCardBack = styled(StyledCardBack)`
   height: 100%;
   width: 100%;
-  &.showed {
-    display: none;
-  }
-`;
-const StyledStartCardBack = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: scaleY(-1);
-  display: none;
-  background: white;
-  color: black;
   text-align: center;
   font-size: 1.2rem;
-
-  &.showed {
-    display: flex;
-  }
 
   &.control {
     cursor: pointer;
@@ -146,22 +104,24 @@ const StyledStartCardBack = styled.div`
   }
 `;
 
-const StyledCardSecondBack = styled.div`
+const StyledCardSecondBack = styled(StyledCardBack)`
   height: 100%;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: scaleY(-1) rotateY('180deg');
-  display: none;
-  background: white;
-  color: black;
+  transform: scaleY(-1) rotateX(180deg);
   text-align: center;
   font-size: 1.2rem;
+`;
 
-  &.showed {
-    display: flex;
-  }
+const StyledStartCardsWrapper = styled.div`
+  perspective: 1000px;
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 40px;
+  z-index: 1;
 `;
 
 class StartView extends Component {
@@ -230,7 +190,7 @@ class StartView extends Component {
         <StyledLetterCard className={card.cardFlipped ? 'flipped' : null} key={card.id}>
           <StyledCardFront className={card.cardShowed ? 'showed' : null} />
           <StyledCardBack className={card.cardShowed ? 'showed' : null}>
-            <StyledCardLetter>{card.cardText}</StyledCardLetter>
+            {card.cardText}
           </StyledCardBack>
         </StyledLetterCard>
       );
@@ -238,7 +198,7 @@ class StartView extends Component {
     const welcomeCards = cards.slice(10, 13).map((card) => {
       return (
         <StyledStartCard className={card.cardFlipped ? 'flipped' : null} key={card.id}>
-          <StyledStartCardFront className={card.cardShowed ? 'showed' : null} />
+          <StyledCardFront className={card.cardShowed ? 'showed' : null} />
           <StyledStartCardBack className={card.cardShowed ? 'showed' : null}>
             {card.cardText}
           </StyledStartCardBack>
@@ -252,7 +212,7 @@ class StartView extends Component {
         <StyledStartCardsWrapper>
           {welcomeCards}
           <StyledStartCard className={welcomeStartCard.cardFlipped ? 'flipped' : null}>
-            <StyledStartCardFront className={welcomeStartCard.cardShowed ? 'showed' : null} />
+            <StyledCardFront className={welcomeStartCard.cardShowed ? 'showed' : null} />
             {welcomeStartCard.cardShowed ? (
               <>
                 <StyledStartCardBack
