@@ -53,7 +53,9 @@ class PracticeView extends Component {
     } else if (buttonType === 'rightArrow') {
       activeCard += 1;
     } else if (buttonType === 'random') {
-      activeCard = Math.floor(Math.random() * cards.length);
+      const prevCard = activeCard;
+      do activeCard = Math.floor(Math.random() * cards.length);
+      while (activeCard === prevCard);
     }
     if (activeCard < 0) {
       activeCard = 0;
