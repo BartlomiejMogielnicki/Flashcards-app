@@ -22,6 +22,10 @@ const StyledButton = styled.button`
   font-size: 1.2rem;
 `;
 
+const StylledStartButton = styled(StyledButton)`
+  width: 80px;
+`;
+
 const Button = ({ icon, addCollection, removeCollection, cardChange, addCard, cardsNum }) => {
   const buttonType = icon;
   if (buttonType === 'delete') {
@@ -59,6 +63,9 @@ const Button = ({ icon, addCollection, removeCollection, cardChange, addCard, ca
   }
   if (buttonType === 'edit') {
     return <StyledButton onClick={addCollection}>{icons.edit}</StyledButton>;
+  }
+  if (buttonType === 'start') {
+    return <StylledStartButton>START</StylledStartButton>;
   }
 
   return (

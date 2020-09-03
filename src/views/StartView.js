@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import startBackground from '../assets/images/startBackground.jpg';
+import Button from '../components/atoms/Button/Button';
 
 const StyledWrapper = styled.div`
   height: 100vh;
@@ -32,7 +34,6 @@ const StyledTitleWrapper = styled.div`
   perspective: 1000px;
   display: flex;
   position: relative;
-  cursor: pointer;
   text-align: center;
   color: white;
   z-index: 1;
@@ -165,37 +166,21 @@ const StyledCardSecondBack = styled.div`
 
 class StartView extends Component {
   state = {
-    cardsFlipped: [
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-    ],
-    cardsShowed: [
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
+    cards: [
+      { cardText: 'F', cardFlipped: false, cardShowed: false, id: 0 },
+      { cardText: 'L', cardFlipped: false, cardShowed: false, id: 1 },
+      { cardText: 'A', cardFlipped: false, cardShowed: false, id: 2 },
+      { cardText: 'S', cardFlipped: false, cardShowed: false, id: 3 },
+      { cardText: 'H', cardFlipped: false, cardShowed: false, id: 5 },
+      { cardText: 'C', cardFlipped: false, cardShowed: false, id: 6 },
+      { cardText: 'A', cardFlipped: false, cardShowed: false, id: 7 },
+      { cardText: 'R', cardFlipped: false, cardShowed: false, id: 8 },
+      { cardText: 'D', cardFlipped: false, cardShowed: false, id: 9 },
+      { cardText: 'S', cardFlipped: false, cardShowed: false, id: 10 },
+      { cardText: 'Do you want to learn easier?', cardFlipped: false, cardShowed: false, id: 11 },
+      { cardText: 'Do you want to learn faster?', cardFlipped: false, cardShowed: false, id: 12 },
+      { cardText: 'Do you want to learn with fun?', cardFlipped: false, cardShowed: false, id: 13 },
+      { cardText: 'Do you want to start?', cardFlipped: false, cardShowed: false, id: 14 },
     ],
     startCard: {
       isFlipped: false,
@@ -204,28 +189,27 @@ class StartView extends Component {
   };
 
   componentDidMount() {
-    const { cardsFlipped, cardsShowed } = this.state;
-    for (let i = 0; i < cardsFlipped.length; i++) {
+    const { cards } = this.state;
+    for (let i = 0; i < cards.length; i++) {
       setTimeout(() => {
-        cardsFlipped[i] = true;
+        cards[i].cardFlipped = true;
         this.setState({
-          cardsFlipped,
+          cards,
         });
-      }, i * 150);
+      }, i * 100);
       setTimeout(() => {
-        cardsShowed[i] = true;
+        cards[i].cardShowed = true;
         this.setState({
-          cardsShowed,
+          cards,
         });
-      }, i * 150 + 80);
+      }, i * 100 + 80);
     }
   }
 
   handleStartCardFlip = () => {
-    const { startCard, cardsFlipped } = this.state;
+    const { cards, startCard, cardsFlipped } = this.state;
     startCard.isFlipped = true;
-
-    cardsFlipped[13] = false;
+    cards[13].cardFlipped = false;
     this.setState({
       cardsFlipped,
       startCard,
@@ -239,84 +223,48 @@ class StartView extends Component {
   };
 
   render() {
-    const { cardsFlipped, cardsShowed, startCard } = this.state;
+    const { cards, startCard } = this.state;
+    const welcomeStartCard = cards[cards.length - 1];
+    const letterCards = cards.slice(0, 10).map((card) => {
+      return (
+        <StyledLetterCard className={card.cardFlipped ? 'flipped' : null} key={card.id}>
+          <StyledCardFront className={card.cardShowed ? 'showed' : null} />
+          <StyledCardBack className={card.cardShowed ? 'showed' : null}>
+            <StyledCardLetter>{card.cardText}</StyledCardLetter>
+          </StyledCardBack>
+        </StyledLetterCard>
+      );
+    });
+    const welcomeCards = cards.slice(10, 13).map((card) => {
+      return (
+        <StyledStartCard className={card.cardFlipped ? 'flipped' : null} key={card.id}>
+          <StyledStartCardFront className={card.cardShowed ? 'showed' : null} />
+          <StyledStartCardBack className={card.cardShowed ? 'showed' : null}>
+            {card.cardText}
+          </StyledStartCardBack>
+        </StyledStartCard>
+      );
+    });
+
     return (
       <StyledWrapper>
-        <StyledTitleWrapper>
-          <StyledLetterCard className={cardsFlipped[0] ? 'flipped' : null}>
-            <StyledCardFront className={cardsShowed[0] ? 'showed' : null} />
-            <StyledCardBack className={cardsShowed[0] ? 'showed' : null}>
-              <StyledCardLetter>F</StyledCardLetter>
-            </StyledCardBack>
-          </StyledLetterCard>
-          <StyledLetterCard className={cardsFlipped[1] ? 'flipped' : null}>
-            <StyledCardFront className={cardsShowed[1] ? 'showed' : null} />
-            <StyledCardBack className={cardsShowed[1] ? 'showed' : null}>L</StyledCardBack>
-          </StyledLetterCard>
-          <StyledLetterCard className={cardsFlipped[2] ? 'flipped' : null}>
-            <StyledCardFront className={cardsShowed[2] ? 'showed' : null} />
-            <StyledCardBack className={cardsShowed[2] ? 'showed' : null}>A</StyledCardBack>
-          </StyledLetterCard>
-          <StyledLetterCard className={cardsFlipped[3] ? 'flipped' : null}>
-            <StyledCardFront className={cardsShowed[3] ? 'showed' : null} />
-            <StyledCardBack className={cardsShowed[3] ? 'showed' : null}>S</StyledCardBack>
-          </StyledLetterCard>
-          <StyledLetterCard className={cardsFlipped[4] ? 'flipped' : null}>
-            <StyledCardFront className={cardsShowed[4] ? 'showed' : null} />
-            <StyledCardBack className={cardsShowed[4] ? 'showed' : null}>H</StyledCardBack>
-          </StyledLetterCard>
-          <StyledLetterCard className={cardsFlipped[5] ? 'flipped' : null}>
-            <StyledCardFront className={cardsShowed[5] ? 'showed' : null} />
-            <StyledCardBack className={cardsShowed[5] ? 'showed' : null}>C</StyledCardBack>
-          </StyledLetterCard>
-          <StyledLetterCard className={cardsFlipped[6] ? 'flipped' : null}>
-            <StyledCardFront className={cardsShowed[6] ? 'showed' : null} />
-            <StyledCardBack className={cardsShowed[6] ? 'showed' : null}>A</StyledCardBack>
-          </StyledLetterCard>
-          <StyledLetterCard className={cardsFlipped[7] ? 'flipped' : null}>
-            <StyledCardFront className={cardsShowed[7] ? 'showed' : null} />
-            <StyledCardBack className={cardsShowed[7] ? 'showed' : null}>R</StyledCardBack>
-          </StyledLetterCard>
-          <StyledLetterCard className={cardsFlipped[8] ? 'flipped' : null}>
-            <StyledCardFront className={cardsShowed[8] ? 'showed' : null} />
-            <StyledCardBack className={cardsShowed[8] ? 'showed' : null}>D</StyledCardBack>
-          </StyledLetterCard>
-          <StyledLetterCard className={cardsFlipped[9] ? 'flipped' : null}>
-            <StyledCardFront className={cardsShowed[9] ? 'showed' : null} />
-            <StyledCardBack className={cardsShowed[9] ? 'showed' : null}>S</StyledCardBack>
-          </StyledLetterCard>
-        </StyledTitleWrapper>
+        <StyledTitleWrapper>{letterCards}</StyledTitleWrapper>
         <StyledStartCardsWrapper>
-          <StyledStartCard className={cardsFlipped[10] ? 'flipped' : null}>
-            <StyledStartCardFront className={cardsShowed[10] ? 'showed' : null} />
-            <StyledStartCardBack className={cardsShowed[10] ? 'showed' : null}>
-              Do you want to learn easier?
-            </StyledStartCardBack>
-          </StyledStartCard>
-          <StyledStartCard className={cardsFlipped[11] ? 'flipped' : null}>
-            <StyledStartCardFront className={cardsShowed[11] ? 'showed' : null} />
-            <StyledStartCardBack className={cardsShowed[11] ? 'showed' : null}>
-              Do you want to learn faster?
-            </StyledStartCardBack>
-          </StyledStartCard>
-          <StyledStartCard className={cardsFlipped[12] ? 'flipped' : null}>
-            <StyledStartCardFront className={cardsShowed[12] ? 'showed' : null} />
-            <StyledStartCardBack className={cardsShowed[12] ? 'showed' : null}>
-              Do you want to learn with fun?
-            </StyledStartCardBack>
-          </StyledStartCard>
-          <StyledStartCard className={cardsFlipped[13] ? 'flipped' : null}>
-            <StyledStartCardFront className={cardsShowed[13] ? 'showed' : null} />
-            {cardsShowed[13] ? (
+          {welcomeCards}
+          <StyledStartCard className={welcomeStartCard.cardFlipped ? 'flipped' : null}>
+            <StyledStartCardFront className={welcomeStartCard.cardShowed ? 'showed' : null} />
+            {welcomeStartCard.cardShowed ? (
               <>
                 <StyledStartCardBack
                   className={startCard.isFlipped ? '' : 'showed control'}
                   onClick={this.handleStartCardFlip}
                 >
-                  Do you want to start?
+                  {welcomeStartCard.cardText}
                 </StyledStartCardBack>
                 <StyledCardSecondBack className={startCard.isHidden ? 'showed' : null}>
-                  START
+                  <Link to="/home">
+                    <Button icon="start" />
+                  </Link>
                 </StyledCardSecondBack>
               </>
             ) : null}

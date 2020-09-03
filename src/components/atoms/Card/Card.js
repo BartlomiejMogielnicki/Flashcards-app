@@ -80,7 +80,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  isFlipped: false,
+  isFlipped: null,
   cards: null,
   activeCard: null,
 };

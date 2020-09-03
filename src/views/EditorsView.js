@@ -36,7 +36,6 @@ const StyledCardItem = styled.li`
   align-items: center;
   border: 1px solid rgba(0, 0, 0, 0.3);
   position: relative;
-  cursor: pointer;
 `;
 
 const StyledCard = styled.div`
