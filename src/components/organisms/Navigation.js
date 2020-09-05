@@ -38,7 +38,9 @@ const StyledLetters = styled.div`
 `;
 
 const Navigation = () => {
-  const lerrersEl = letters.map((letter) => <StyledLetters>{letter}</StyledLetters>);
+  const lerrersEl = letters.map((letter, index) => (
+    <StyledLetters key={index}>{letter}</StyledLetters>
+  ));
   return (
     <StyledNavWrapper>
       <StyledLogoContainer>{lerrersEl}</StyledLogoContainer>

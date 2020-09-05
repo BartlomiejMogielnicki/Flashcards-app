@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Heading from '../components/atoms/Heading/Heading';
-import FlipCard from '../components/molecules/FlipCard/FlipCard';
 import Button from '../components/atoms/Button/Button';
+import CardsCarousel from '../components/organisms/CardsCarousel';
 
 const StyledWrapper = styled.div`
   padding-bottom: 150px;
@@ -16,16 +16,6 @@ const StyledWrapper = styled.div`
 
 const StyledHeading = styled(Heading)`
   color: white;
-`;
-
-const StyledCardContainer = styled.div`
-  width: 600px;
-  height: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  box-shadow: 0 0 10px 10px white;
 `;
 
 const StyledButtonsContainer = styled.div`
@@ -93,11 +83,7 @@ class PracticeView extends Component {
     return (
       <StyledWrapper>
         <StyledHeading>{title}</StyledHeading>
-        {cards ? (
-          <StyledCardContainer>
-            <FlipCard cards={cards} activeCard={activeCard} />
-          </StyledCardContainer>
-        ) : null}
+        {cards && <CardsCarousel cards={cards} activeCard={activeCard} />}
         <StyledButtonsContainer>
           <StyledArrowsContainer>
             <Button icon="leftArrow" cardChange={this.handleCardChange} />

@@ -1,7 +1,47 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import PropTypes from 'prop-types';
 import Card from '../../atoms/Card/Card';
+
+const slideInLeft = keyframes`
+from {
+  transform: translateX(120%) rotateY(-20deg);
+}
+
+to {
+  transform: translateX(0) rotateY(0);
+}
+`;
+
+const slideInRight = keyframes`
+from {
+  transform: translateX(-120%) rotateY(20deg);
+}
+
+to {
+  transform: translateX(0) rotateY(0);
+}
+`;
+
+const slideOutLeft = keyframes`
+from {
+  transform: translateX(0) rotateY(0);
+}
+
+to {
+  transform: translateX(-120%) rotateY(20deg);
+}
+`;
+
+const slideOutRight = keyframes`
+from {
+  transform: translateX(0) rotateY(0);
+}
+
+to {
+  transform: translateX(120%) rotateY(-20deg);
+}
+`;
 
 const StyledCardContainer = styled.div`
   perspective: 1000px;
@@ -11,6 +51,37 @@ const StyledCardContainer = styled.div`
   background-color: white;
   cursor: pointer;
   text-align: center;
+  transition: 0.3s;
+
+  ${({ cardLeft }) =>
+    cardLeft &&
+    css`
+      position: absolute;
+      animation: ${slideOutLeft} 0.5s ease forwards;
+    `};
+
+  ${({ cardRight }) =>
+    cardRight &&
+    css`
+      position: absolute;
+      transform: translateX(120%) rotateY(-20deg);
+    `};
+
+  &.slideInLeft {
+    animation: ${slideInLeft} 0.5s ease forwards;
+  }
+
+  &.slideInRight {
+    animation: ${slideInRight} 0.5s ease forwards;
+  }
+
+  &.slideOutLeft {
+    animation: ${slideOutLeft} 0.5s ease forwards;
+  }
+
+  &.slideOutRight {
+    animation: ${slideOutRight} 0.5s ease forwards;
+  }
 `;
 
 class FlipCard extends Component {
@@ -18,10 +89,10 @@ class FlipCard extends Component {
     isFlipped: false,
   };
 
-  componentDidUpdate(nextProps) {
+  componentDidUpdate(prevProps) {
     const { activeCard } = this.props;
     const { isFlipped } = this.state;
-    if (nextProps.activeCard !== activeCard && isFlipped === true) {
+    if (prevProps.activeCard !== activeCard && isFlipped === true) {
       this.handleCardFlip();
     }
   }
@@ -35,27 +106,63 @@ class FlipCard extends Component {
 
   render() {
     const { isFlipped } = this.state;
-    const { cards, activeCard } = this.props;
-
-    return (
+    const { card, cardLeft, cardRight, swapDirection } = this.props;
+    const cardLeftEl = (
       <StyledCardContainer
-        className={`${isFlipped ? 'flipped' : ''}`}
+        className={`${isFlipped ? 'flipped' : ''} ${
+          swapDirection === 'right' ? 'slideOutLeft' : 'cardLeft'
+        }`}
+        onClick={this.handleCardFlip}
+        cardLeft
+      >
+        <Card isFlipped={isFlipped} card={card} />
+      </StyledCardContainer>
+    );
+    const cardActiveEl = (
+      <StyledCardContainer
+        className={`${isFlipped ? 'flipped' : ''} ${
+          swapDirection === 'right' ? 'slideInLeft' : 'slideInRight'
+        }`}
         onClick={this.handleCardFlip}
       >
-        <Card isFlipped={isFlipped} cards={cards} activeCard={activeCard} />
+        <Card isFlipped={isFlipped} card={card} />
       </StyledCardContainer>
+    );
+    const cardRightEl = (
+      <StyledCardContainer
+        className={`${isFlipped ? 'flipped' : ''} ${
+          swapDirection === 'right' ? 'cardRight' : 'slideOutRight'
+        }`}
+        onClick={this.handleCardFlip}
+        cardRight
+      >
+        <Card isFlipped={isFlipped} card={card} />
+      </StyledCardContainer>
+    );
+    return (
+      <>
+        {cardLeft && cardLeftEl}
+        {!cardLeft && !cardRight && cardActiveEl}
+        {cardRight && cardRightEl}
+      </>
     );
   }
 }
 
 FlipCard.propTypes = {
-  cards: PropTypes.instanceOf(Array),
+  card: PropTypes.object,
   activeCard: PropTypes.number,
+  cardLeft: PropTypes.bool,
+  cardRight: PropTypes.bool,
+  swapDirection: PropTypes.string,
 };
 
 FlipCard.defaultProps = {
-  cards: null,
+  card: null,
   activeCard: null,
+  cardLeft: false,
+  cardRight: false,
+  swapDirection: null,
 };
 
 export default FlipCard;
