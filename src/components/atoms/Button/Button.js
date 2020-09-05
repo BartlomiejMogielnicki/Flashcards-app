@@ -34,6 +34,7 @@ const Button = ({
   addCard,
   cardsNum,
   title,
+  disabled,
 }) => {
   const buttonType = icon;
   if (buttonType === 'delete') {
@@ -54,10 +55,18 @@ const Button = ({
     return <StyledButton disabled>{icons.play}</StyledButton>;
   }
   if (buttonType === 'leftArrow') {
-    return <StyledButton onClick={() => cardChange(buttonType)}>{icons.leftArrow}</StyledButton>;
+    return (
+      <StyledButton disabled={disabled} onClick={() => cardChange(buttonType)}>
+        {icons.leftArrow}
+      </StyledButton>
+    );
   }
   if (buttonType === 'rightArrow') {
-    return <StyledButton onClick={() => cardChange(buttonType)}>{icons.rightArrow}</StyledButton>;
+    return (
+      <StyledButton disabled={disabled} onClick={() => cardChange(buttonType)}>
+        {icons.rightArrow}
+      </StyledButton>
+    );
   }
   if (buttonType === 'random') {
     return <StyledButton onClick={() => cardChange(buttonType)}>{icons.random}</StyledButton>;
@@ -100,6 +109,7 @@ Button.propTypes = {
   addCard: PropTypes.func,
   cardsNum: PropTypes.number,
   title: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -110,6 +120,7 @@ Button.defaultProps = {
   addCard: null,
   cardsNum: null,
   title: null,
+  disabled: false,
 };
 
 export default Button;

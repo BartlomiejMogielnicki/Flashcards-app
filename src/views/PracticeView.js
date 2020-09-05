@@ -86,11 +86,19 @@ class PracticeView extends Component {
         {cards && <CardsCarousel cards={cards} activeCard={activeCard} />}
         <StyledButtonsContainer>
           <StyledArrowsContainer>
-            <Button icon="leftArrow" cardChange={this.handleCardChange} />
+            <Button
+              disabled={activeCard === 0}
+              icon="leftArrow"
+              cardChange={this.handleCardChange}
+            />
             <StyledParagraph>
               {activeCard + 1} / {cardsNum}
             </StyledParagraph>
-            <Button icon="rightArrow" cardChange={this.handleCardChange} />
+            <Button
+              disabled={activeCard + 1 === cardsNum}
+              icon="rightArrow"
+              cardChange={this.handleCardChange}
+            />
           </StyledArrowsContainer>
           <StyledOutsideButton>
             <Button icon="random" cardChange={this.handleCardChange} />
