@@ -57,7 +57,7 @@ const StyledCardContainer = styled.div`
     cardLeft &&
     css`
       position: absolute;
-      animation: ${slideOutLeft} 0.5s ease forwards;
+      transform: translateX(-120%) rotateY(20deg);
     `};
 
   ${({ cardRight }) =>

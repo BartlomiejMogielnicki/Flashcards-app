@@ -15,8 +15,8 @@ const StyledWrapper = styled.div`
 
 const MainTemplate = ({ children }) => (
   <ThemeProvider theme={theme}>
+    <GlobalStyles />
     <StyledWrapper>
-      <GlobalStyles />
       <Navigation />
       {children}
     </StyledWrapper>
