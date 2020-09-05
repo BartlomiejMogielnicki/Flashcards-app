@@ -101,7 +101,7 @@ class PracticeView extends Component {
             />
           </StyledArrowsContainer>
           <StyledOutsideButton>
-            <Button icon="random" cardChange={this.handleCardChange} />
+            <Button disabled={cardsNum === 1} icon="random" cardChange={this.handleCardChange} />
           </StyledOutsideButton>
         </StyledButtonsContainer>
       </StyledWrapper>

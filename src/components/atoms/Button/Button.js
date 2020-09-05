@@ -69,7 +69,11 @@ const Button = ({
     );
   }
   if (buttonType === 'random') {
-    return <StyledButton onClick={() => cardChange(buttonType)}>{icons.random}</StyledButton>;
+    return (
+      <StyledButton disabled={disabled} onClick={() => cardChange(buttonType)}>
+        {icons.random}
+      </StyledButton>
+    );
   }
   if (buttonType === 'save') {
     return <StyledButton>{icons.apply}</StyledButton>;
