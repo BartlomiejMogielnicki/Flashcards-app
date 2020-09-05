@@ -83,6 +83,7 @@ class HomeView extends Component {
     if (e.type === 'click') {
       newCollection.showModal = !newCollection.showModal;
       newCollection.newTitle = '';
+      newCollection.showError = false;
       this.setState({
         newCollection,
       });

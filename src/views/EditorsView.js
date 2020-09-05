@@ -154,6 +154,8 @@ class EditorsView extends Component {
       newCard.cardQuestion = '';
       newCard.cardAnswer = '';
       newCard.showModal = !newCard.showModal;
+      newCard.showQuestionError = false;
+      newCard.showAnswerError = false;
       this.setState({
         newCard,
       });
