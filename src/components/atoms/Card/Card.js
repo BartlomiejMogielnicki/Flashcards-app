@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 
 const StyledCard = styled.div`
@@ -53,8 +53,19 @@ const StyledCardBack = styled(StyledCard)`
   }
 `;
 
+const FadeIn = keyframes`
+from {
+  opacity: 0;
+}
+
+to {
+  opacity: 1
+}
+`;
+
 const StyledCardText = styled.p`
   font-size: 1.3rem;
+  animation: ${FadeIn} 0.2s linear forwards;
 `;
 
 const Card = ({ isFlipped, card }) => {
