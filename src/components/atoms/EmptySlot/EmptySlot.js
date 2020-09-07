@@ -12,6 +12,18 @@ const StyledWrapper = styled.div`
   cursor: pointer;
   border: 2px solid #555;
 
+  &:hover {
+    border: 1px solid #ccc;
+  }
+
+  &:hover > div {
+    background-color: #ccc;
+  }
+
+  &:hover > div::after {
+    background-color: #ccc;
+  }
+
   ${({ small }) =>
     small &&
     css`

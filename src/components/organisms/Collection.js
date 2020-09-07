@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Button from '../atoms/Button/Button';
 import Paragraph from '../atoms/Paragraph/Paragraph';
+import cardsImage from '../../assets/images/cards.png';
 
 const StyledWrapper = styled.div`
-  padding: 10px;
+  padding: 20px 10px;
   width: 250px;
   height: 300px;
   display: grid;
@@ -16,10 +17,18 @@ const StyledWrapper = styled.div`
   border: 1px solid black;
   text-align: center;
   color: white;
-  border: 2px solid #555;
+  border: 1px solid #ccc;
 `;
 
-const StyledCollectionImage = styled.div``;
+const StyledCollectionImage = styled.div`
+  margin: 0 auto;
+  height: 100px;
+  width: 150px;
+  background: url(${cardsImage});
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+`;
 
 const StyledButtonsContainer = styled.div`
   width: 200px;

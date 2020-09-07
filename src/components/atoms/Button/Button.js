@@ -29,6 +29,15 @@ const StyledButton = styled.button`
     color: white;
     transform: scale(1.1);
   }
+
+  &:disabled {
+    background-color: #555;
+
+    &:hover {
+      color: #ddd;
+      transform: scale(1);
+    }
+  }
 `;
 
 const StylledStartButton = styled(StyledButton)`
