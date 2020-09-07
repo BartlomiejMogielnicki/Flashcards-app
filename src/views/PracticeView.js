@@ -11,7 +11,7 @@ const StyledWrapper = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: black;
+  background-color: ${({ theme }) => theme.primaryColor};
 `;
 
 const StyledHeading = styled(Heading)`

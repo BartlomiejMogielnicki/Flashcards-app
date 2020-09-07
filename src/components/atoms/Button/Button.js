@@ -20,6 +20,8 @@ const StyledButton = styled.button`
   height: 40px;
   display: block;
   font-size: 1.2rem;
+  background-color: ${({ theme }) => theme.tertiaryColor};
+  color: #ddd;
 `;
 
 const StylledStartButton = styled(StyledButton)`

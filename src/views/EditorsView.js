@@ -63,7 +63,7 @@ const StyledCardNumber = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.tertiaryColor};
+  background-color: ${({ theme }) => theme.secondaryColor};
   color: white;
   font-weight: bold;
   font-size: 0.8rem;
