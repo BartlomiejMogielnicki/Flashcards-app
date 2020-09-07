@@ -59,7 +59,7 @@ const Collection = ({ title, cardsNum, cards, collections, removeCollection }) =
         )}
         <Link
           to={{
-            pathname: '/editor',
+            pathname: '/edit',
             state: { cards, title, collections },
           }}
         >

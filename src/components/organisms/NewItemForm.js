@@ -54,6 +54,7 @@ const NewItemForm = ({
               value={title}
               onChange={addCollection}
               autoFocus
+              maxLength="10"
             />
             {showError && <StyledErrorMessage>{errorMessage}</StyledErrorMessage>}
           </label>

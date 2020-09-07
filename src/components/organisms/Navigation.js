@@ -46,7 +46,7 @@ const Navigation = () => {
       <StyledLogoContainer>{lerrersEl}</StyledLogoContainer>
       <StyledLinksList>
         <li>
-          <NavLink to="/home">
+          <NavLink to="/collections">
             <Button icon="home" />
           </NavLink>
         </li>

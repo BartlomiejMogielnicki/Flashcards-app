@@ -6,7 +6,8 @@ import theme from '../theme/MainTheme';
 import Navigation from '../components/organisms/Navigation';
 
 const StyledWrapper = styled.div`
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   width: 100%;
   display: grid;
   grid-template-rows: 75px 1fr;

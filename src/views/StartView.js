@@ -222,7 +222,7 @@ class StartView extends Component {
                   {welcomeStartCard.cardText}
                 </StyledStartCardBack>
                 <StyledCardSecondBack className={startCard.isHidden ? 'showed' : null}>
-                  <Link to="/home">
+                  <Link to="/collections">
                     <Button icon="start" />
                   </Link>
                 </StyledCardSecondBack>

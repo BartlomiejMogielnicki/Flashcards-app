@@ -7,8 +7,18 @@ import NewItemModal from '../components/organisms/NewItemModal';
 
 const StyledWrapper = styled.div`
   margin: 0 auto;
-  padding-top: 75px;
+  padding: 50px 10px 10px;
+  width: 100%;
   max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledCollectionsContainer = styled.div`
+  height: 100%;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, 250px);
   grid-template-rows: repeat(auto-fill, 300px);
@@ -183,15 +193,17 @@ class HomeView extends Component {
     );
     return (
       <StyledWrapper>
-        {cards}
-        {newCollection.showModal && (
-          <NewItemModal
-            addCollection={this.handleAddCollection}
-            title={newCollection.newTitle}
-            errorMessage={newCollection.errorMessage}
-            showError={newCollection.showError}
-          />
-        )}
+        <StyledCollectionsContainer>
+          {cards}
+          {newCollection.showModal && (
+            <NewItemModal
+              addCollection={this.handleAddCollection}
+              title={newCollection.newTitle}
+              errorMessage={newCollection.errorMessage}
+              showError={newCollection.showError}
+            />
+          )}
+        </StyledCollectionsContainer>
         {deleteCollection.showModal && (
           <NewItemModal removeCollection={this.handleRemoveCollection} />
         )}

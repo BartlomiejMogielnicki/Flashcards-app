@@ -11,9 +11,9 @@ const Root = () => (
     <MainTemplate>
       <Switch>
         <Route exact path="/" component={StartView} />
-        <Route exact path="/home" component={HomeView} />
+        <Route exact path="/collections" component={HomeView} />
         <Route path="/practice" component={PracticeView} />
-        <Route path="/editor" component={EditorsVies} />
+        <Route path="/edit" component={EditorsVies} />
       </Switch>
     </MainTemplate>
   </BrowserRouter>

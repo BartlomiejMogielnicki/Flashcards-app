@@ -43,6 +43,7 @@ const StyledCardItem = styled.li`
 
 const StyledCard = styled.div`
   margin: 10px;
+  padding: 5px;
   width: 150px;
   height: 100px;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
@@ -51,7 +52,7 @@ const StyledCard = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   background-color: white;
 `;
 
@@ -244,7 +245,7 @@ class EditorsView extends Component {
         <StyledControlsContainer>
           <Link
             to={{
-              pathname: '/home',
+              pathname: '/collections',
               state: { collections },
             }}
           >
@@ -252,7 +253,7 @@ class EditorsView extends Component {
           </Link>
           <Link
             to={{
-              pathname: '/home',
+              pathname: '/collections',
             }}
           >
             <Button icon="discard" />
