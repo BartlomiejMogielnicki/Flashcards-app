@@ -5,8 +5,10 @@ import FlipCard from '../molecules/FlipCard/FlipCard';
 
 const StyledWrapper = styled.div`
   perspective: 1000px;
-  width: 600px;
-  height: 400px;
+  width: 80%;
+  max-width: 600px;
+  height: 100%;
+  max-height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,6 +16,10 @@ const StyledWrapper = styled.div`
   box-shadow: 0 0 10px 10px white;
   position: relative;
   overflow-x: hidden;
+
+  @media (max-width: 550px) {
+    max-height: 200px;
+  }
 `;
 
 class CardsCarousel extends Component {

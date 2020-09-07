@@ -16,6 +16,11 @@ const StyledWrapper = styled.div`
   border: 2px solid #555;
   border-radius: 20px;
   box-shadow: 0 0 5px 2px black;
+
+  @media (max-width: 550px) {
+    width: 250px;
+    height: 250px;
+  }
 `;
 
 const NewItemModal = ({

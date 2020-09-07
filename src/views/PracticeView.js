@@ -5,6 +5,8 @@ import Button from '../components/atoms/Button/Button';
 import CardsCarousel from '../components/organisms/CardsCarousel';
 
 const StyledWrapper = styled.div`
+  min-height: 100vh;
+  height: 100%;
   padding-bottom: 150px;
   display: flex;
   flex-direction: column;
@@ -22,6 +24,10 @@ const StyledButtonsContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+
+  @media (max-width: 550px) {
+    width: 300px;
+  }
 `;
 
 const StyledParagraph = styled.p`

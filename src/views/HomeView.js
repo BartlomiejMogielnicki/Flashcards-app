@@ -7,13 +7,17 @@ import NewItemModal from '../components/organisms/NewItemModal';
 
 const StyledWrapper = styled.div`
   margin: 0 auto;
-  padding: 50px 10px 10px;
+  padding: 75px 10px 10px;
   width: 100%;
   max-width: 1000px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 550px) {
+    padding: 25px 10px 10px;
+  }
 `;
 
 const StyledCollectionsContainer = styled.div`

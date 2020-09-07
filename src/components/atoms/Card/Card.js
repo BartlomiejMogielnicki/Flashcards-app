@@ -66,6 +66,10 @@ to {
 const StyledCardText = styled.p`
   font-size: 1.3rem;
   animation: ${FadeIn} 0.2s linear forwards;
+
+  @media (max-width: 550px) {
+    font-size: 1rem;
+  }
 `;
 
 const Card = ({ isFlipped, card }) => {

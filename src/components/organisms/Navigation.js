@@ -25,6 +25,10 @@ const StyledLinksList = styled.div`
 const StyledLogoContainer = styled.div`
   margin-left: 15px;
   display: flex;
+
+  @media (max-width: 550px) {
+    margin-left: 5px;
+  }
 `;
 
 const StyledLetters = styled.div`
@@ -35,6 +39,11 @@ const StyledLetters = styled.div`
   font-weight: bold;
   font-size: 1.5rem;
   box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 1);
+
+  @media (max-width: 550px) {
+    padding: 3px;
+    font-size: 1.2rem;
+  }
 `;
 
 const Navigation = () => {

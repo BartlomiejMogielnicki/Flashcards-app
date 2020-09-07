@@ -45,8 +45,10 @@ to {
 
 const StyledCardContainer = styled.div`
   perspective: 1000px;
-  width: 500px;
-  height: 300px;
+  width: 90%;
+  max-width: 500px;
+  height: calc(100vw * 0.9 * 0.6);
+  max-height: 300px;
   position: relative;
   background-color: white;
   cursor: pointer;

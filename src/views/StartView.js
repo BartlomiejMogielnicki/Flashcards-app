@@ -5,7 +5,9 @@ import Button from '../components/atoms/Button/Button';
 import startBackground from '../assets/images/startBackground.jpg';
 
 const StyledWrapper = styled.div`
-  height: 100vh;
+  padding: 10px;
+  min-height: 100vh;
+  height: 100%;
   width: 100%;
   position: fixed;
   top: 0;
@@ -15,6 +17,11 @@ const StyledWrapper = styled.div`
   background: url(${startBackground});
   background-position: center;
   background-size: cover;
+
+  @media (max-width: 550px) {
+    display: flex;
+    justify-content: center;
+  }
 
   ::after {
     content: '';
@@ -31,7 +38,10 @@ const StyledWrapper = styled.div`
 const StyledTitleWrapper = styled.div`
   margin: 30px 30px;
   perspective: 1000px;
+  width: 90%;
+  max-width: 1000px;
   display: flex;
+  justify-content: space-evenly;
   position: relative;
   text-align: center;
   color: white;
@@ -48,15 +58,19 @@ const StyledLetterCard = styled.div`
   align-items: center;
   transition: 0.3s ease;
 
+  @media (max-width: 1000px) {
+    height: 80px;
+  }
+
+  @media (max-width: 550px) {
+    height: 50px;
+    margin: 2px;
+  }
+
   &.flipped {
     transform: rotateX(180deg);
     box-shadow: 3px -3px 5px 1px rgba(0, 0, 0, 1);
   }
-`;
-
-const StyledStartCard = styled(StyledLetterCard)`
-  width: 300px;
-  height: 150px;
 `;
 
 const StyledCardFront = styled.div`
@@ -66,9 +80,10 @@ const StyledCardFront = styled.div`
     display: none;
   }
 `;
+
 const StyledCardBack = styled.div`
-  width: 75px;
-  height: 125px;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,8 +93,63 @@ const StyledCardBack = styled.div`
   color: black;
   font-size: 4rem;
 
+  @media (max-width: 1000px) {
+    font-size: 3rem;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 2rem;
+  }
+
   &.showed {
     display: flex;
+  }
+`;
+
+const StyledStartCardsWrapper = styled.div`
+  perspective: 1000px;
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 40px;
+  z-index: 1;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    right: 0px;
+    grid-gap: 20px;
+  }
+
+  @media (max-width: 550px) {
+  }
+`;
+
+const StyledStartCard = styled(StyledLetterCard)`
+  width: 300px;
+  height: 150px;
+
+  @media (max-width: 1000px) {
+    height: 150px;
+  }
+
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 120px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 550px) {
+    width: 150px;
+    height: 100px;
+  }
+`;
+
+const StyledStartCardFront = styled(StyledCardFront)`
+  @media (max-width: 1000px) {
+    font-size: 1.2rem;
   }
 `;
 
@@ -88,6 +158,10 @@ const StyledStartCardBack = styled(StyledCardBack)`
   width: 100%;
   text-align: center;
   font-size: 1.2rem;
+
+  @media (max-width: 1000px) {
+    font-size: 1.2rem;
+  }
 
   &.control {
     cursor: pointer;
@@ -110,18 +184,6 @@ const StyledCardSecondBack = styled(StyledCardBack)`
   text-align: center;
   font-size: 1.2rem;
   box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 1);
-`;
-
-const StyledStartCardsWrapper = styled.div`
-  perspective: 1000px;
-  position: absolute;
-  bottom: 50px;
-  right: 50px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-gap: 40px;
-  z-index: 1;
 `;
 
 class StartView extends Component {
@@ -198,7 +260,7 @@ class StartView extends Component {
     const welcomeCards = cards.slice(10, 13).map((card) => {
       return (
         <StyledStartCard className={card.cardFlipped ? 'flipped' : null} key={card.id}>
-          <StyledCardFront className={card.cardShowed ? 'showed' : null} />
+          <StyledStartCardFront className={card.cardShowed ? 'showed' : null} />
           <StyledStartCardBack className={card.cardShowed ? 'showed' : null}>
             {card.cardText}
           </StyledStartCardBack>
@@ -212,7 +274,7 @@ class StartView extends Component {
         <StyledStartCardsWrapper>
           {welcomeCards}
           <StyledStartCard className={welcomeStartCard.cardFlipped ? 'flipped' : null}>
-            <StyledCardFront className={welcomeStartCard.cardShowed ? 'showed' : null} />
+            <StyledStartCardFront className={welcomeStartCard.cardShowed ? 'showed' : null} />
             {welcomeStartCard.cardShowed ? (
               <>
                 <StyledStartCardBack
