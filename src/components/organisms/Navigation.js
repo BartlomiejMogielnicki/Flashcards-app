@@ -13,8 +13,12 @@ const StyledNavWrapper = styled.div`
   align-items: center;
   background: ${({ theme }) => theme.secondaryColor};
 
+  @media (max-width: 550px) {
+    height: 50px;
+  }
+
   @media (max-height: 600px) {
-    height: 60px;
+    height: 50px;
   }
 `;
 
@@ -45,7 +49,12 @@ const StyledLetters = styled.div`
   font-size: 1.5rem;
 
   @media (max-width: 550px) {
-    padding: 3px;
+    padding: 2px;
+    font-size: 1.2rem;
+  }
+
+  @media (max-height: 600px) {
+    padding: 2px;
     font-size: 1.2rem;
   }
 `;

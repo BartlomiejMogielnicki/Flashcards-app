@@ -13,8 +13,12 @@ const StyledWrapper = styled.div`
   grid-template-rows: 75px 1fr;
   background-color: ${theme.primaryColor};
 
+  @media (max-width: 550px) {
+    grid-template-rows: 50px 1fr;
+  }
+
   @media (max-height: 600px) {
-    grid-template-rows: 60px 1fr;
+    grid-template-rows: 50px 1fr;
   }
 `;
 

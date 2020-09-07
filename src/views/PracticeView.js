@@ -15,6 +15,7 @@ const StyledWrapper = styled.div`
   background-color: ${({ theme }) => theme.primaryColor};
 
   @media (max-height: 600px) {
+    min-height: 100vh - 50px;
     padding-bottom: 5px;
   }
 `;
