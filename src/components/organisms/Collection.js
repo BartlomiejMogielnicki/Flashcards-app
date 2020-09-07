@@ -48,7 +48,9 @@ const Collection = ({ title, cardsNum, cards, collections, removeCollection }) =
     <StyledWrapper>
       <div>
         <h2>{title}</h2>
-        <Paragraph>{cardsNum} Cards</Paragraph>
+        <Paragraph>
+          {cardsNum} {cardsNum === 1 ? 'Card' : 'Cards'}
+        </Paragraph>
       </div>
       <StyledCollectionImage />
       <StyledButtonsContainer>
