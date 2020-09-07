@@ -136,6 +136,11 @@ const StyledStartCardsWrapper = styled.div`
     grid-gap: 20px;
   }
 
+  @media (max-width: 400px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
   @media (max-height: 600px) {
     width: 100%;
     right: 0px;
@@ -164,7 +169,8 @@ const StyledStartCard = styled(StyledLetterCard)`
 
   @media (max-height: 600px) {
     width: 200px;
-    height: 100px;
+    height: 90px;
+    margin: 0 auto;
   }
 `;
 
