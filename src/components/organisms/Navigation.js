@@ -8,7 +8,7 @@ const letters = ['F', 'L', 'A', 'S', 'H', 'C', 'A', 'R', 'D', 'S'];
 const StyledNavWrapper = styled.div`
   width: 100%;
   height: 75px;
-  background: ${({ theme }) => theme.tertiaryColor};
+  background: ${({ theme }) => theme.secondaryColor};
   display: flex;
   justify-content: space-between;
   align-items: center;

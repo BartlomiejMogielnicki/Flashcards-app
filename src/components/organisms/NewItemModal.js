@@ -10,7 +10,7 @@ const StyledWrapper = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  background-color: ${({ theme }) => theme.tertiaryColor};
+  background-color: ${({ theme }) => theme.quaternaryColor};
   transform: translate(-50%, -50%);
   color: white;
   border: 2px solid #555;

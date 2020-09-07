@@ -10,7 +10,7 @@ const StyledWrapper = styled.div`
   width: 100%;
   display: grid;
   grid-template-rows: 75px 1fr;
-  background-color: black;
+  background-color: ${theme.primaryColor};
 `;
 
 const MainTemplate = ({ children }) => (
