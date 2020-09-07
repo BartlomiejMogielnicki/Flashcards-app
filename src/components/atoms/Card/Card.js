@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 const StyledCard = styled.div`
   width: 100%;
   height: 100%;
-  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
   transition: 0.3s ease;
 
   &.flipped {
@@ -25,18 +25,18 @@ const StyledCardFront = styled.div`
 
   :after {
     content: '\f2f1  Flip';
-    font-family: 'FontAwesome', 'Roboto Condensed', sans-serif;
     position: absolute;
     bottom: 15px;
     right: 15px;
+    font-family: 'FontAwesome', 'Roboto Condensed', sans-serif;
     font-size: 0.9em;
     color: rgba(0, 0, 0, 0.5);
   }
 `;
 
 const StyledCardBack = styled(StyledCard)`
-  transform: scaleY(-1);
   display: none;
+  transform: scaleY(-1);
 
   &.flipped {
     display: flex;
@@ -44,10 +44,10 @@ const StyledCardBack = styled(StyledCard)`
 
   :after {
     content: '\f2f1  Flip';
-    font-family: 'FontAwesome', 'Roboto Condensed', sans-serif;
     position: absolute;
     bottom: 15px;
     right: 15px;
+    font-family: 'FontAwesome', 'Roboto Condensed', sans-serif;
     font-size: 0.9em;
     color: rgba(0, 0, 0, 0.5);
   }

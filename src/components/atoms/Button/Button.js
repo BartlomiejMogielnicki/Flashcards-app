@@ -19,9 +19,9 @@ const StyledButton = styled.button`
   width: 40px;
   height: 40px;
   display: block;
-  font-size: 1.2rem;
   background-color: ${({ theme }) => theme.tertiaryColor};
   color: #ddd;
+  font-size: 1.2rem;
   transition: 0.2s;
 
   &:hover {
@@ -121,7 +121,6 @@ const Button = ({
   if (buttonType === 'start') {
     return <StylledStartButton>START</StylledStartButton>;
   }
-
   return (
     <StyledButton onClick={addCollection}>
       {icon === 'apply' ? icons.apply : null}

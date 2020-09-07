@@ -205,17 +205,15 @@ class HomeView extends Component {
     );
     return (
       <StyledWrapper>
-        <StyledCollectionsContainer>
-          {cards}
-          {newCollection.showModal && (
-            <NewItemModal
-              addCollection={this.handleAddCollection}
-              title={newCollection.newTitle}
-              errorMessage={newCollection.errorMessage}
-              showError={newCollection.showError}
-            />
-          )}
-        </StyledCollectionsContainer>
+        <StyledCollectionsContainer>{cards}</StyledCollectionsContainer>
+        {newCollection.showModal && (
+          <NewItemModal
+            addCollection={this.handleAddCollection}
+            title={newCollection.newTitle}
+            errorMessage={newCollection.errorMessage}
+            showError={newCollection.showError}
+          />
+        )}
         {deleteCollection.showModal && (
           <NewItemModal removeCollection={this.handleRemoveCollection} />
         )}

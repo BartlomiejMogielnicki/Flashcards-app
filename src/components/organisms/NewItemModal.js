@@ -10,11 +10,11 @@ const StyledWrapper = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  background-color: ${({ theme }) => theme.quaternaryColor};
   transform: translate(-50%, -50%);
-  color: white;
+  background-color: ${({ theme }) => theme.quaternaryColor};
   border: 2px solid #555;
   border-radius: 20px;
+  color: white;
   box-shadow: 0 0 5px 2px black;
 
   @media (max-width: 550px) {

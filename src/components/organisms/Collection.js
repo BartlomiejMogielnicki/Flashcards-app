@@ -14,10 +14,9 @@ const StyledWrapper = styled.div`
   grid-template-rows: 1fr 4fr 1fr;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
+  border: 1px solid #ccc;
   text-align: center;
   color: white;
-  border: 1px solid #ccc;
 
   @media (max-height: 600px) {
     height: 250px;

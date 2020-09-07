@@ -46,7 +46,6 @@ const StyledCardItem = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.3);
   position: relative;
   border: 2px solid #555;
 `;
@@ -56,20 +55,19 @@ const StyledCard = styled.div`
   padding: 5px;
   width: 150px;
   height: 100px;
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: white;
   text-align: center;
   font-size: 0.7rem;
-  background-color: white;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
 `;
 
 const StyledCardNumber = styled.div`
   height: 20px;
   width: 20px;
-  border-radius: 50%;
   position: absolute;
   top: -10px;
   left: -10px;
@@ -77,6 +75,7 @@ const StyledCardNumber = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.secondaryColor};
+  border-radius: 50%;
   color: white;
   font-weight: bold;
   font-size: 0.8rem;
@@ -85,7 +84,6 @@ const StyledCardNumber = styled.div`
 const StyledDeleteButton = styled.button`
   height: 20px;
   width: 20px;
-  border-radius: 50%;
   position: absolute;
   bottom: -10px;
   right: -10px;
@@ -93,6 +91,7 @@ const StyledDeleteButton = styled.button`
   justify-content: center;
   align-items: center;
   background-color: rgba(255, 0, 0, 0.7);
+  border-radius: 50%;
   border: none;
   color: white;
   font-size: 1rem;

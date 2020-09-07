@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 const StyledWrapper = styled.div`
   width: 250px;
   height: 300px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   border: 2px solid #555;
+  cursor: pointer;
 
   @media (max-height: 600px) {
     height: 250px;
@@ -46,8 +46,8 @@ const StyledSlotContent = styled.div`
   height: 150px;
   width: 5px;
   position: relative;
-  border-radius: 10px;
   background-color: #555;
+  border-radius: 10px;
 
   ${({ small }) =>
     small &&
@@ -62,8 +62,8 @@ const StyledSlotContent = styled.div`
     position: absolute;
     top: 50%;
     left: -70px;
-    border-radius: 10px;
     background-color: #555;
+    border-radius: 10px;
 
     ${({ small }) =>
       small &&

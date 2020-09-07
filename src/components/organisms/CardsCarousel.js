@@ -12,9 +12,9 @@ const StyledWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   background-color: white;
   box-shadow: 0 0 10px 10px white;
-  position: relative;
   overflow-x: hidden;
 
   @media (max-width: 550px) {
@@ -23,7 +23,7 @@ const StyledWrapper = styled.div`
 
   @media (max-height: 600px) {
     max-height: 150px;
-    max-width: 400px;
+    max-width: 500px;
   }
 `;
 

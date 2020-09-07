@@ -42,8 +42,6 @@ const StyledParagraph = styled.p`
   color: white;
 `;
 
-const StyledOutsideButton = styled.div``;
-
 const StyledArrowsContainer = styled.div`
   width: 150px;
   display: flex;
@@ -113,9 +111,9 @@ class PracticeView extends Component {
               cardChange={this.handleCardChange}
             />
           </StyledArrowsContainer>
-          <StyledOutsideButton>
+          <div>
             <Button disabled={cardsNum === 1} icon="random" cardChange={this.handleCardChange} />
-          </StyledOutsideButton>
+          </div>
         </StyledButtonsContainer>
       </StyledWrapper>
     );

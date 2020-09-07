@@ -36,8 +36,8 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledTitleWrapper = styled.div`
-  margin: 30px 30px;
   perspective: 1000px;
+  margin: 30px 30px;
   width: 90%;
   max-width: 1000px;
   display: flex;
@@ -184,6 +184,10 @@ const StyledStartCardBack = styled(StyledCardBack)`
     font-size: 1.2rem;
   }
 
+  @media (max-width: 550px) {
+    font-size: 0.9rem;
+  }
+
   @media (max-height: 600px) {
     font-size: 1rem;
   }
@@ -192,10 +196,10 @@ const StyledStartCardBack = styled(StyledCardBack)`
     cursor: pointer;
     :after {
       content: '\f2f1  Flip';
-      font-family: 'FontAwesome', 'Roboto Condensed', sans-serif;
       position: absolute;
       bottom: 10px;
       right: 15px;
+      font-family: 'FontAwesome', 'Roboto Condensed', sans-serif;
       font-size: 0.8em;
       color: rgba(0, 0, 0, 0.5);
     }

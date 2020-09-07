@@ -51,9 +51,13 @@ const StyledCardContainer = styled.div`
   max-height: 300px;
   position: relative;
   background-color: white;
-  cursor: pointer;
   text-align: center;
   transition: 0.3s;
+  cursor: pointer;
+
+  @media (max-width: 550px) {
+    max-height: 180px;
+  }
 
   @media (max-height: 600px) {
     height: 90%;

@@ -8,10 +8,10 @@ const letters = ['F', 'L', 'A', 'S', 'H', 'C', 'A', 'R', 'D', 'S'];
 const StyledNavWrapper = styled.div`
   width: 100%;
   height: 75px;
-  background: ${({ theme }) => theme.secondaryColor};
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: ${({ theme }) => theme.secondaryColor};
 
   @media (max-height: 600px) {
     height: 60px;
@@ -38,11 +38,11 @@ const StyledLogoContainer = styled.div`
 const StyledLetters = styled.div`
   margin: 3px;
   padding: 5px;
-  border-radius: 2px;
   background-color: white;
+  border-radius: 2px;
+  box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 1);
   font-weight: bold;
   font-size: 1.5rem;
-  box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 1);
 
   @media (max-width: 550px) {
     padding: 3px;
