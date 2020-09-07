@@ -22,10 +22,24 @@ const StyledButton = styled.button`
   font-size: 1.2rem;
   background-color: ${({ theme }) => theme.tertiaryColor};
   color: #ddd;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.secondaryColor};
+    color: white;
+    transform: scale(1.1);
+  }
 `;
 
 const StylledStartButton = styled(StyledButton)`
   width: 80px;
+`;
+
+const StylledHomeBurron = styled(StyledButton)`
+  &:hover {
+    background-color: ${({ theme }) => theme.primaryColor};
+    color: white;
+  }
 `;
 
 const Button = ({
@@ -81,7 +95,7 @@ const Button = ({
     return <StyledButton>{icons.apply}</StyledButton>;
   }
   if (buttonType === 'home') {
-    return <StyledButton>{icons.home}</StyledButton>;
+    return <StylledHomeBurron>{icons.home}</StylledHomeBurron>;
   }
   if (buttonType === 'discard' && addCard) {
     return <StyledButton onClick={(e) => addCard(e, buttonType)}>{icons.cancel}</StyledButton>;

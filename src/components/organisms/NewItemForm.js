@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Heading from '../atoms/Heading/Heading';
 import Input from '../atoms/Input/Input';
 import Button from '../atoms/Button/Button';
 
@@ -26,8 +25,9 @@ const StyledButtonContainer = styled.div`
 
 const StyledErrorMessage = styled.p`
   margin: 5px 0 0 2px;
-  color: black;
+  color: rgb(194, 17, 47);
   font-size: 0.8rem;
+  font-weight: bold;
 `;
 
 const NewItemForm = ({
@@ -45,7 +45,7 @@ const NewItemForm = ({
   if (addCollection) {
     return (
       <StyledWrapperForm onSubmit={(e) => addCollection(e)}>
-        <Heading>Add new collection</Heading>
+        <h2>Add new collection</h2>
         <StyledInputContainer>
           <label>
             Collection name:
@@ -68,7 +68,7 @@ const NewItemForm = ({
   if (addCard) {
     return (
       <StyledWrapperForm onSubmit={(e) => addCard(e, title)}>
-        <Heading>Add new card</Heading>
+        <h2>Add new card</h2>
         <StyledInputContainer>
           <label>
             Question:
@@ -102,7 +102,7 @@ const NewItemForm = ({
   if (removeCollection) {
     return (
       <StyledWrapperForm onSubmit={(e) => removeCollection(e)}>
-        <Heading>Are you sure?</Heading>
+        <h2>Are you sure?</h2>
         <StyledButtonContainer>
           <Button icon="applyDelete" />
           <Button icon="cancelDelete" removeCollection={removeCollection} />

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Heading from '../atoms/Heading/Heading';
 import Button from '../atoms/Button/Button';
 import Paragraph from '../atoms/Paragraph/Paragraph';
 
@@ -23,6 +22,7 @@ const StyledWrapper = styled.div`
 const StyledCollectionImage = styled.div``;
 
 const StyledButtonsContainer = styled.div`
+  width: 200px;
   display: flex;
   justify-content: space-evenly;
 `;
@@ -31,7 +31,7 @@ const Collection = ({ title, cardsNum, cards, collections, removeCollection }) =
   return (
     <StyledWrapper>
       <div>
-        <Heading>{title}</Heading>
+        <h2>{title}</h2>
         <Paragraph>{cardsNum} Cards</Paragraph>
       </div>
       <StyledCollectionImage />

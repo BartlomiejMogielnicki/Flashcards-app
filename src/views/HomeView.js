@@ -7,7 +7,7 @@ import NewItemModal from '../components/organisms/NewItemModal';
 
 const StyledWrapper = styled.div`
   margin: 0 auto;
-  padding-top: 50px;
+  padding-top: 75px;
   max-width: 1000px;
   display: grid;
   grid-template-columns: repeat(auto-fill, 250px);

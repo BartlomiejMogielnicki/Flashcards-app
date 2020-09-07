@@ -16,6 +16,8 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledHeading = styled.h2`
+  margin-bottom: 10px;
+  color: white;
   text-align: center;
 `;
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Heading from '../components/atoms/Heading/Heading';
 import Button from '../components/atoms/Button/Button';
 import CardsCarousel from '../components/organisms/CardsCarousel';
 
@@ -14,7 +13,7 @@ const StyledWrapper = styled.div`
   background-color: ${({ theme }) => theme.primaryColor};
 `;
 
-const StyledHeading = styled(Heading)`
+const StyledHeading = styled.h2`
   color: white;
 `;
 
