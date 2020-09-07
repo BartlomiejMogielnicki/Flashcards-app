@@ -46,6 +46,10 @@ const StyledTitleWrapper = styled.div`
   text-align: center;
   color: white;
   z-index: 1;
+
+  @media (max-height: 600px) {
+    margin: 10px auto;
+  }
 `;
 
 const StyledLetterCard = styled.div`
@@ -65,6 +69,11 @@ const StyledLetterCard = styled.div`
   @media (max-width: 550px) {
     height: 50px;
     margin: 2px;
+  }
+
+  @media (max-height: 600px) {
+    height: 50px;
+    width: 30px;
   }
 
   &.flipped {
@@ -101,6 +110,10 @@ const StyledCardBack = styled.div`
     font-size: 2rem;
   }
 
+  @media (max-height: 600px) {
+    font-size: 2rem;
+  }
+
   &.showed {
     display: flex;
   }
@@ -123,7 +136,10 @@ const StyledStartCardsWrapper = styled.div`
     grid-gap: 20px;
   }
 
-  @media (max-width: 550px) {
+  @media (max-height: 600px) {
+    width: 100%;
+    right: 0px;
+    bottom: 20px;
   }
 `;
 
@@ -145,6 +161,11 @@ const StyledStartCard = styled(StyledLetterCard)`
     width: 150px;
     height: 100px;
   }
+
+  @media (max-height: 600px) {
+    width: 200px;
+    height: 100px;
+  }
 `;
 
 const StyledStartCardFront = styled(StyledCardFront)`
@@ -161,6 +182,10 @@ const StyledStartCardBack = styled(StyledCardBack)`
 
   @media (max-width: 1000px) {
     font-size: 1.2rem;
+  }
+
+  @media (max-height: 600px) {
+    font-size: 1rem;
   }
 
   &.control {

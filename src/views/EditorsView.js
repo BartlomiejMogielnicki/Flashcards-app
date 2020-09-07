@@ -13,12 +13,21 @@ const StyledWrapper = styled.div`
   max-width: 1200px;
   display: flex;
   flex-direction: column;
+
+  @media (max-height: 600px) {
+    padding: 5px;
+  }
 `;
 
 const StyledHeading = styled.h2`
   margin-bottom: 10px;
   color: white;
   text-align: center;
+
+  @media (max-height: 600px) {
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+  }
 `;
 
 const StyledCardsList = styled.ul`
@@ -33,6 +42,7 @@ const StyledCardsList = styled.ul`
 
 const StyledCardItem = styled.li`
   width: 170px;
+  height: 210px;
   display: flex;
   flex-direction: column;
   align-items: center;

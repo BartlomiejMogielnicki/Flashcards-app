@@ -21,6 +21,11 @@ const StyledWrapper = styled.div`
     width: 250px;
     height: 250px;
   }
+
+  @media (max-height: 600px) {
+    width: 250px;
+    height: 250px;
+  }
 `;
 
 const NewItemModal = ({

@@ -12,6 +12,10 @@ const StyledNavWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-height: 600px) {
+    height: 60px;
+  }
 `;
 
 const StyledLinksList = styled.div`

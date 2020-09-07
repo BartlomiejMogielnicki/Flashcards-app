@@ -12,6 +12,10 @@ const StyledWrapper = styled.div`
   display: grid;
   grid-template-rows: 75px 1fr;
   background-color: ${theme.primaryColor};
+
+  @media (max-height: 600px) {
+    grid-template-rows: 60px 1fr;
+  }
 `;
 
 const MainTemplate = ({ children }) => (

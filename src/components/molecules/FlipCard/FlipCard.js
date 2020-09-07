@@ -55,6 +55,11 @@ const StyledCardContainer = styled.div`
   text-align: center;
   transition: 0.3s;
 
+  @media (max-height: 600px) {
+    height: 90%;
+    max-width: 400px;
+  }
+
   ${({ cardLeft }) =>
     cardLeft &&
     css`

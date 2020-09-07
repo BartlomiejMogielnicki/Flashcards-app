@@ -5,7 +5,7 @@ import Button from '../components/atoms/Button/Button';
 import CardsCarousel from '../components/organisms/CardsCarousel';
 
 const StyledWrapper = styled.div`
-  min-height: 100vh;
+  min-height: 100vh - 75px;
   height: 100%;
   padding-bottom: 150px;
   display: flex;
@@ -13,10 +13,18 @@ const StyledWrapper = styled.div`
   justify-content: space-around;
   align-items: center;
   background-color: ${({ theme }) => theme.primaryColor};
+
+  @media (max-height: 600px) {
+    padding-bottom: 5px;
+  }
 `;
 
 const StyledHeading = styled.h2`
   color: white;
+
+  @media (max-height: 600px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const StyledButtonsContainer = styled.div`

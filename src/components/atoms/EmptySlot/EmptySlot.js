@@ -12,6 +12,10 @@ const StyledWrapper = styled.div`
   cursor: pointer;
   border: 2px solid #555;
 
+  @media (max-height: 600px) {
+    height: 250px;
+  }
+
   &:hover {
     border: 1px solid #ccc;
   }
@@ -31,6 +35,10 @@ const StyledWrapper = styled.div`
       min-height: 210px;
       width: 100%;
       min-width: 170px;
+
+      @media (max-height: 600px) {
+        height: 210px;
+      }
     `}
 `;
 

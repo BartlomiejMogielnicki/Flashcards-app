@@ -20,6 +20,11 @@ const StyledWrapper = styled.div`
   @media (max-width: 550px) {
     max-height: 200px;
   }
+
+  @media (max-height: 600px) {
+    max-height: 150px;
+    max-width: 400px;
+  }
 `;
 
 class CardsCarousel extends Component {

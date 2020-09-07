@@ -18,6 +18,10 @@ const StyledWrapper = styled.div`
   text-align: center;
   color: white;
   border: 1px solid #ccc;
+
+  @media (max-height: 600px) {
+    height: 250px;
+  }
 `;
 
 const StyledCollectionImage = styled.div`
@@ -28,6 +32,10 @@ const StyledCollectionImage = styled.div`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+
+  @media (max-height: 600px) {
+    height: 80px;
+  }
 `;
 
 const StyledButtonsContainer = styled.div`

@@ -18,6 +18,10 @@ const StyledWrapper = styled.div`
   @media (max-width: 550px) {
     padding: 25px 10px 10px;
   }
+
+  @media (max-height: 600px) {
+    padding: 20px 10px;
+  }
 `;
 
 const StyledCollectionsContainer = styled.div`
@@ -30,6 +34,10 @@ const StyledCollectionsContainer = styled.div`
   justify-items: center;
   justify-content: center;
   position: relative;
+
+  @media (max-height: 600px) {
+    grid-template-rows: repeat(auto-fill, 250px);
+  }
 `;
 
 class HomeView extends Component {

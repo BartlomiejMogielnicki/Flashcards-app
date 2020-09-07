@@ -70,6 +70,10 @@ const StyledCardText = styled.p`
   @media (max-width: 550px) {
     font-size: 1rem;
   }
+
+  @media (max-height: 600px) {
+    font-size: 1rem;
+  }
 `;
 
 const Card = ({ isFlipped, card }) => {
