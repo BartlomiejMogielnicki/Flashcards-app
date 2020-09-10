@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
+import { withRouter } from 'react-router';
 import GlobalStyles from '../theme/GlobalStyle';
 import theme from '../theme/MainTheme';
 import Navigation from '../components/organisms/Navigation';
@@ -22,18 +23,28 @@ const StyledWrapper = styled.div`
   }
 `;
 
-const MainTemplate = ({ children }) => (
-  <ThemeProvider theme={theme}>
-    <GlobalStyles />
-    <StyledWrapper>
-      <Navigation />
-      {children}
-    </StyledWrapper>
-  </ThemeProvider>
-);
+const MainTemplate = ({ children, location }) => {
+  const { pathname } = location;
+
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <StyledWrapper>
+        {pathname !== '/' && <Navigation />}
+        {children}
+      </StyledWrapper>
+    </ThemeProvider>
+  );
+};
 
 MainTemplate.propTypes = {
   children: PropTypes.element.isRequired,
+  location: PropTypes.object.isRequired,
+  pathname: PropTypes.string,
 };
 
-export default MainTemplate;
+MainTemplate.defaultProps = {
+  pathname: null,
+};
+
+export default withRouter(MainTemplate);

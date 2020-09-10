@@ -12,7 +12,6 @@ const StyledWrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 0;
   background-color: ${({ theme }) => theme.tertiaryColor};
   background: url(${startBackground});
   background-position: center;
