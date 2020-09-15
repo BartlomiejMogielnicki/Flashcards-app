@@ -93,7 +93,13 @@ class PracticeView extends Component {
   };
 
   handleKeyPress = (e) => {
-    console.log(e.keyCode);
+    if (e.keyCode === 39) {
+      this.handleCardChange('rightArrow');
+    } else if (e.keyCode === 37) {
+      this.handleCardChange('leftArrow');
+    } else if (e.keyCode === 17) {
+      this.handleCardChange('random');
+    }
   };
 
   render() {
