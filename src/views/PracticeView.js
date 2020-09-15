@@ -62,6 +62,12 @@ class PracticeView extends Component {
       cards,
       activeCard,
     });
+
+    document.addEventListener('keydown', this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyPress);
   }
 
   handleCardChange = (buttonType) => {
@@ -84,6 +90,10 @@ class PracticeView extends Component {
     this.setState({
       activeCard,
     });
+  };
+
+  handleKeyPress = (e) => {
+    console.log(e.keyCode);
   };
 
   render() {
