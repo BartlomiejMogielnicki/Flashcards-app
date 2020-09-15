@@ -100,6 +100,10 @@ class FlipCard extends Component {
     isFlipped: false,
   };
 
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyPress);
+  }
+
   componentDidUpdate(prevProps) {
     const { activeCard } = this.props;
     const { isFlipped } = this.state;
@@ -108,11 +112,21 @@ class FlipCard extends Component {
     }
   }
 
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyPress);
+  }
+
   handleCardFlip = () => {
     const { isFlipped } = this.state;
     this.setState({
       isFlipped: !isFlipped,
     });
+  };
+
+  handleKeyPress = (e) => {
+    if (e.keyCode === 38 || e.keyCode === 40) {
+      this.handleCardFlip();
+    }
   };
 
   render() {

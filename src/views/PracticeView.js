@@ -93,9 +93,10 @@ class PracticeView extends Component {
   };
 
   handleKeyPress = (e) => {
-    if (e.keyCode === 39) {
+    const { cards, activeCard } = this.state;
+    if (e.keyCode === 39 && activeCard !== cards.length - 1) {
       this.handleCardChange('rightArrow');
-    } else if (e.keyCode === 37) {
+    } else if (e.keyCode === 37 && activeCard !== 0) {
       this.handleCardChange('leftArrow');
     } else if (e.keyCode === 17) {
       this.handleCardChange('random');
