@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 const StyledCard = styled.div`
   width: 100%;
   height: 100%;
+  padding: 5px 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;

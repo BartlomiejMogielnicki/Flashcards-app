@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Button from '../components/atoms/Button/Button';
 import CardsCarousel from '../components/organisms/CardsCarousel';
+import keysImage from '../assets/images/keys.png';
 
 const StyledWrapper = styled.div`
   perspective: 1000px;
@@ -49,6 +50,31 @@ const StyledArrowsContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+`;
+
+const StyledInfo = styled.div`
+  height: 140px;
+  width: 220px;
+  padding: 10px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  border: 1px solid #777;
+  color: #777;
+  text-align: center;
+
+  & img {
+    margin-top: 10px;
+    width: 90%;
+  }
+
+  & p > i {
+    margin-right: 5px;
+  }
+
+  @media (max-width: 800px) {
+    display: none;
+  }
 `;
 
 class PracticeView extends Component {
@@ -134,6 +160,13 @@ class PracticeView extends Component {
             <Button disabled={cardsNum === 1} icon="random" cardChange={this.handleCardChange} />
           </div>
         </StyledButtonsContainer>
+        <StyledInfo>
+          <p>
+            <i className="fas fa-info-circle" />
+            Navigate with keyboard
+          </p>
+          <img src={keysImage} alt="Keyboard arrow buttons" />
+        </StyledInfo>
       </StyledWrapper>
     );
   }
