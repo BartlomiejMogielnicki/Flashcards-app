@@ -23,7 +23,9 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledHeading = styled.h2`
+  font-size: 1.8rem;
   color: white;
+  letter-spacing: 2px;
 
   @media (max-height: 600px) {
     font-size: 1.1rem;

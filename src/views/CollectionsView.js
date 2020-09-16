@@ -41,7 +41,7 @@ const StyledCollectionsContainer = styled.div`
   }
 `;
 
-class HomeView extends Component {
+class CollectionsView extends Component {
   state = {
     collections: [
       { title: 'empty' },
@@ -221,12 +221,12 @@ class HomeView extends Component {
   }
 }
 
-HomeView.propTypes = {
+CollectionsView.propTypes = {
   location: PropTypes.any,
 };
 
-HomeView.defaultProps = {
+CollectionsView.defaultProps = {
   location: null,
 };
 
-export default HomeView;
+export default CollectionsView;

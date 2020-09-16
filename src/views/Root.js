@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import MainTemplate from '../templates/MainTemplate';
 import StartView from './StartView';
-import HomeView from './HomeView';
+import CollectionsView from './CollectionsView';
 import PracticeView from './PracticeView';
 import EditorsVies from './EditorsView';
 
@@ -11,7 +11,7 @@ const Root = () => (
     <MainTemplate>
       <Switch>
         <Route exact path="/" component={StartView} />
-        <Route exact path="/collections" component={HomeView} />
+        <Route exact path="/collections" component={CollectionsView} />
         <Route path="/practice" component={PracticeView} />
         <Route path="/edit" component={EditorsVies} />
       </Switch>
