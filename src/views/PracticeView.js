@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Button from '../components/atoms/Button/Button';
-import CardsCarousel from '../components/organisms/CardsCarousel';
+import CardsCarousel from '../components/organisms/CardsCarousel/CardsCarousel';
 import keysImage from '../assets/images/keys.png';
 
 const StyledWrapper = styled.div`

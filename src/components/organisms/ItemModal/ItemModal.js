@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
-import NewItemForm from './NewItemForm';
+import ItemForm from './ItemForm';
 
 const flipIn = keyframes`
   from {
@@ -37,7 +37,7 @@ const StyledWrapper = styled.div`
   }
 `;
 
-const NewItemModal = ({
+const ItemModal = ({
   addCollection,
   title,
   errorMessage,
@@ -52,7 +52,7 @@ const NewItemModal = ({
   return (
     <StyledWrapper>
       {addCollection && (
-        <NewItemForm
+        <ItemForm
           addCollection={addCollection}
           title={title}
           errorMessage={errorMessage}
@@ -60,7 +60,7 @@ const NewItemModal = ({
         />
       )}
       {addCard && (
-        <NewItemForm
+        <ItemForm
           addCard={addCard}
           question={question}
           answer={answer}
@@ -71,12 +71,12 @@ const NewItemModal = ({
           showAnswerError={showAnswerError}
         />
       )}
-      {removeCollection && <NewItemForm title={title} removeCollection={removeCollection} />}
+      {removeCollection && <ItemForm title={title} removeCollection={removeCollection} />}
     </StyledWrapper>
   );
 };
 
-NewItemModal.propTypes = {
+ItemModal.propTypes = {
   addCollection: PropTypes.func,
   addCard: PropTypes.func,
   title: PropTypes.string,
@@ -89,7 +89,7 @@ NewItemModal.propTypes = {
   removeCollection: PropTypes.func,
 };
 
-NewItemModal.defaultProps = {
+ItemModal.defaultProps = {
   addCollection: null,
   addCard: null,
   title: null,
@@ -102,4 +102,4 @@ NewItemModal.defaultProps = {
   removeCollection: null,
 };
 
-export default NewItemModal;
+export default ItemModal;

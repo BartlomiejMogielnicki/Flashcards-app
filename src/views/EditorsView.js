@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../components/atoms/Button/Button';
 import EmptySlot from '../components/atoms/EmptySlot/EmptySlot';
-import NewItemModal from '../components/organisms/NewItemModal';
+import ItemModal from '../components/organisms/ItemModal/ItemModal';
 
 const StyledWrapper = styled.div`
   perspective: 1000px;
@@ -270,7 +270,7 @@ class EditorsView extends Component {
           </Link>
         </StyledControlsContainer>
         {newCard.showModal ? (
-          <NewItemModal
+          <ItemModal
             addCard={this.handleCardAdd}
             question={newCard.cardQuestion}
             answer={newCard.cardAnswer}

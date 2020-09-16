@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
-import Input from '../atoms/Input/Input';
-import Button from '../atoms/Button/Button';
+import Input from '../../atoms/Input/Input';
+import Button from '../../atoms/Button/Button';
 
 const showIn = keyframes`
 0% {
@@ -45,7 +45,7 @@ const StyledErrorMessage = styled.p`
   font-weight: bold;
 `;
 
-const NewItemForm = ({
+const ItemForm = ({
   addCollection,
   title,
   errorMessage,
@@ -129,7 +129,7 @@ const NewItemForm = ({
   return false;
 };
 
-NewItemForm.propTypes = {
+ItemForm.propTypes = {
   addCollection: PropTypes.func,
   addCard: PropTypes.func,
   title: PropTypes.string,
@@ -142,7 +142,7 @@ NewItemForm.propTypes = {
   removeCollection: PropTypes.func,
 };
 
-NewItemForm.defaultProps = {
+ItemForm.defaultProps = {
   addCollection: null,
   addCard: null,
   title: null,
@@ -155,4 +155,4 @@ NewItemForm.defaultProps = {
   removeCollection: null,
 };
 
-export default NewItemForm;
+export default ItemForm;

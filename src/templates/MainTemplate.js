@@ -4,7 +4,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { withRouter } from 'react-router';
 import GlobalStyles from '../theme/GlobalStyle';
 import theme from '../theme/MainTheme';
-import Navigation from '../components/organisms/Navigation';
+import Navigation from '../components/organisms/Navigation/Navigation';
 
 const StyledWrapper = styled.div`
   height: 100%;

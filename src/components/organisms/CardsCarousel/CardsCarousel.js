@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import FlipCard from '../molecules/FlipCard/FlipCard';
+import FlipCard from '../../molecules/FlipCard/FlipCard';
 
 const StyledWrapper = styled.div`
   perspective: 1000px;

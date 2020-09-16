@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Collection from '../components/organisms/Collection';
+import Collection from '../components/organisms/Collection/Collection';
 import EmptySlot from '../components/atoms/EmptySlot/EmptySlot';
-import NewItemModal from '../components/organisms/NewItemModal';
+import ItemModal from '../components/organisms/ItemModal/ItemModal';
 
 const StyledWrapper = styled.div`
   perspective: 1000px;
@@ -208,16 +208,14 @@ class HomeView extends Component {
       <StyledWrapper>
         <StyledCollectionsContainer>{cards}</StyledCollectionsContainer>
         {newCollection.showModal && (
-          <NewItemModal
+          <ItemModal
             addCollection={this.handleAddCollection}
             title={newCollection.newTitle}
             errorMessage={newCollection.errorMessage}
             showError={newCollection.showError}
           />
         )}
-        {deleteCollection.showModal && (
-          <NewItemModal removeCollection={this.handleRemoveCollection} />
-        )}
+        {deleteCollection.showModal && <ItemModal removeCollection={this.handleRemoveCollection} />}
       </StyledWrapper>
     );
   }
