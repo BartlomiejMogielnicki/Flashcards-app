@@ -6,6 +6,7 @@ import EmptySlot from '../components/atoms/EmptySlot/EmptySlot';
 import NewItemModal from '../components/organisms/NewItemModal';
 
 const StyledWrapper = styled.div`
+  perspective: 1000px;
   margin: 0 auto;
   padding: 75px 10px 10px;
   width: 100%;

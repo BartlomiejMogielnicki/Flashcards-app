@@ -5,6 +5,7 @@ import Button from '../components/atoms/Button/Button';
 import CardsCarousel from '../components/organisms/CardsCarousel';
 
 const StyledWrapper = styled.div`
+  perspective: 1000px;
   min-height: 100vh - 75px;
   height: 100%;
   padding-bottom: 150px;

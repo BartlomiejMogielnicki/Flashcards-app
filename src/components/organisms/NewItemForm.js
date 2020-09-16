@@ -1,8 +1,22 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 import Input from '../atoms/Input/Input';
 import Button from '../atoms/Button/Button';
+
+const showIn = keyframes`
+0% {
+  opacity: 0
+}
+
+60% {
+  opacity: 0
+}
+
+100% {
+  opacity: 1
+}
+`;
 
 const StyledWrapperForm = styled.form`
   height: 100%;
@@ -10,6 +24,7 @@ const StyledWrapperForm = styled.form`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  animation: ${showIn} 0.2s linear forwards;
 `;
 
 const StyledInputContainer = styled.div`
@@ -25,7 +40,7 @@ const StyledButtonContainer = styled.div`
 
 const StyledErrorMessage = styled.p`
   margin: 5px 0 0 2px;
-  color: rgb(194, 17, 47);
+  color: red;
   font-size: 0.8rem;
   font-weight: bold;
 `;

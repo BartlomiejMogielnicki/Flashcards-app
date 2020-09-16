@@ -1,21 +1,30 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 import NewItemForm from './NewItemForm';
 
+const flipIn = keyframes`
+  from {
+    transform: translate(-50%, -50%) rotateX(180deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotateX(0);
+  }
+`;
+
 const StyledWrapper = styled.div`
-  width: 300px;
-  height: 300px;
+  width: 330px;
+  height: 280px;
   padding: 10px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: ${({ theme }) => theme.quaternaryColor};
-  border: 2px solid #555;
-  border-radius: 20px;
-  color: white;
-  box-shadow: 0 0 5px 2px black;
+  background-color: white;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
+  color: ${({ theme }) => theme.tertiaryColor};
+  animation: ${flipIn} 0.2s linear forwards;
 
   @media (max-width: 550px) {
     width: 250px;

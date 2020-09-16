@@ -10,4 +10,4 @@ You can use your keyboard:
 arrow up/arrow down - flip card,
 arrow left - previous card,
 arrow right - next card,
-right ctrl - random card
+right ctrl - random card.
